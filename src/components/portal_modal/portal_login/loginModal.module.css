@@ -1,0 +1,38 @@
+.loginModal {
+  position: fixed;
+  z-index: 1000;
+  text-align: center;
+  background-color: #00000080;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.login {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 70%;
+  width: 35%;
+  margin: auto;
+  background-color: white;
+  border-radius: 5%;
+}
+.loginForm {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.inputBar {
+  margin-bottom: 0.5em;
+  padding: 0.5em;
+  width: 80%;
+  border-radius: 10px;
+  border: none;
+  background-color: #e6e6e6;
+}
+.inputBar:focus {
+  outline: none;
+}

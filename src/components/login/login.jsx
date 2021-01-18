@@ -1,23 +1,22 @@
 import React, { useState } from "react";
-import LoginModal from "../portal_modal/loginModal";
+import LoginModal from "../portal_modal/portal_login/loginModal";
 import ModalPotal from "../portal_modal/modalPotal";
 import styles from "./login.module.css";
 
 const Login = ({ authService }) => {
   const [modal, setModal] = useState(false);
-  const onLogin = () => {
-    authService.login();
-  };
-  const onSignUp = () => {
+  const handleSignUp = () => {
     setModal(true);
+  };
+  const handleClose = () => {
+    setModal(false);
   };
   return (
     <div>
-      <button onClick={onSignUp}>회원 가입</button>
-      <button onClick={onLogin}>Google</button>
+      <button onClick={handleSignUp}>회원 가입</button>
       {modal && (
         <ModalPotal>
-          <LoginModal />
+          <LoginModal onClose={handleClose} authService={authService} />
         </ModalPotal>
       )}
     </div>
