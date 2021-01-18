@@ -36,3 +36,20 @@
 .inputBar:focus {
   outline: none;
 }
+.lostPassword {
+  font-size: 0.7rem;
+  color: #ff0080;
+}
+.noAccount {
+  font-size: 0.7rem;
+  padding-right: 0.5em;
+}
+.loginOrRegister {
+  font-size: 0.8rem;
+  color: #ff0080;
+}
+
+.loginOrRegister,
+.lostPassword:hover {
+  cursor: pointer;
+}

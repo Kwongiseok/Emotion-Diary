@@ -5,9 +5,19 @@ import styles from "./login.module.css";
 
 const Login = ({ authService }) => {
   const [modal, setModal] = useState(false);
+  const [clickRegister, setRegisterClick] = useState(true);
+  const [clickLogin, setLoginClick] = useState(true);
+
   const handleSignUp = () => {
     setModal(true);
+    setLoginClick(false);
   };
+
+  const handleClickBtn = () => {
+    setRegisterClick(!clickRegister);
+    setLoginClick(!clickLogin);
+  };
+
   const handleClose = () => {
     setModal(false);
   };
@@ -16,7 +26,13 @@ const Login = ({ authService }) => {
       <button onClick={handleSignUp}>회원 가입</button>
       {modal && (
         <ModalPotal>
-          <LoginModal onClose={handleClose} authService={authService} />
+          <LoginModal
+            onClose={handleClose}
+            authService={authService}
+            onClickAuth={handleClickBtn}
+            clickRegister={clickRegister}
+            clickLogin={clickLogin}
+          />
         </ModalPotal>
       )}
     </div>
