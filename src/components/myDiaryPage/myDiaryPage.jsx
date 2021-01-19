@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import Calendar from "../calendar/calendar";
 import Header from "../header/header";
 import styles from "./myDiaryPage.module.css";
 const MyDiaryPage = (props) => {
-  const diaryList = [
+  const [diaryList, setDiaryList] = useState([
     {
       id: 1,
       year: 2021,
@@ -13,11 +13,14 @@ const MyDiaryPage = (props) => {
       day: 19,
       diaryText: "일기장이에요~~",
     },
-  ];
+  ]);
+  const resetDiaryList = () => {
+    setDiaryList([]);
+  };
   return (
     <div className="MyDiaryPage">
       <Header></Header>
-      <Calendar diaryList={diaryList} />
+      <Calendar diaryList={diaryList} resetDiaryList={resetDiaryList} />
     </div>
   );
 };

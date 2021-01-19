@@ -1,18 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./calendar.module.css";
 import {
   getDate,
   addDays,
-  addMonths,
   getYear,
   getMonth,
   format,
   startOfWeek,
-  subMonths,
   getWeeksInMonth,
 } from "date-fns";
-const CalendarBody = ({ diaryList }) => {
-  const [date, setDate] = useState(new Date());
+const CalendarBody = ({ date, diaryList }) => {
   const weekDays = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
   const headerYear = getYear(date);
   const headerMonth = getMonth(date);
@@ -59,7 +56,7 @@ const CalendarBody = ({ diaryList }) => {
                     ? "sameDay"
                     : "";
                 return (
-                  <div>
+                  <div className={styles.showingDayBox} key={dayIndex}>
                     <span>{showingDay}</span>
                   </div>
                 );

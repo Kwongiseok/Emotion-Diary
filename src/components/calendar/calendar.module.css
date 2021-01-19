@@ -1,0 +1,53 @@
+.calendar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.CalendarHeader {
+  user-select: none;
+  display: flex;
+  padding: 1rem;
+  align-items: center;
+}
+
+.button {
+  display: inline-flex;
+  border: none;
+  background-color: transparent;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.CalendarBody {
+  /* display: flex; */
+}
+.weekDays {
+  display: flex;
+  flex-direction: row;
+}
+.dayName {
+  padding: 1rem;
+}
+
+.monthBox {
+  display: flex;
+  flex-direction: column;
+}
+.weekBox {
+  display: flex;
+  flex-direction: row;
+}
+
+.showingDayBox {
+  display: flex;
+  flex-direction: column;
+  width: 4rem;
+  height: 4rem;
+  text-align: center;
+  align-items: center;
+  cursor: pointer;
+}
+.showingDayBox:hover {
+  background-color: #00000020;
+}

@@ -1,13 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./calendar.module.css";
 import CalendarBody from "./calendarBody";
 import CalendarHeader from "./calendarHeader";
-
-const Calendar = ({ diaryList }) => {
+const Calendar = ({ diaryList, resetDiaryList }) => {
+  const [date, setDate] = useState(new Date());
+  const handleDate = (date) => {
+    setDate(date);
+  };
   return (
     <div className={styles.calendar}>
-      <CalendarHeader />
-      <CalendarBody diaryList={diaryList} />
+      <CalendarHeader
+        onSetDate={handleDate}
+        date={date}
+        resetDiaryList={resetDiaryList}
+      />
+      <CalendarBody date={date} diaryList={diaryList} />
     </div>
   );
 };
