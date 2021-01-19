@@ -1,7 +1,7 @@
 import "./app.module.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Login from "./components/login/login";
 import Main from "./components/main/main";
+import MyDiaryPage from "./components/myDiaryPage/myDiaryPage";
 
 function App({ authService }) {
   return (
@@ -9,10 +9,10 @@ function App({ authService }) {
       <Router>
         <Switch>
           <Route exact path="/">
-            <Login authService={authService} />
+            <Main authService={authService} />
           </Route>
-          <Route path="/main">
-            <Main />
+          <Route path="/myDiaryPage">
+            <MyDiaryPage />
           </Route>
         </Switch>
       </Router>

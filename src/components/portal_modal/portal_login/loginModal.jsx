@@ -18,9 +18,17 @@ const LoginModal = ({
       <div className={styles.login}>
         <PortalHeader loginOrSignUp={"로그인"} />
         {clickLogin ? (
-          <LoginBody onClickAuth={onClickAuth} authService={authService} />
+          <LoginBody
+            onClickAuth={onClickAuth}
+            authService={authService}
+            onClose={onClose}
+          />
         ) : (
-          <RegisterBody onClickAuth={onClickAuth} authService={authService} />
+          <RegisterBody
+            onClickAuth={onClickAuth}
+            authService={authService}
+            onClose={onClose}
+          />
         )}
         <PortalFooter authService={authService} />
         <button onClick={onClose}>close</button>

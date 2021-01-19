@@ -1,23 +1,36 @@
 import React, { useRef } from "react";
+import { useHistory } from "react-router-dom";
 import styles from "./loginModal.module.css";
-const LoginBody = ({ onClickAuth, authService }) => {
+const LoginBody = ({ authService, onClickAuth, onClose }) => {
+  const formRef = useRef();
   const emailRef = useRef();
   const passwordRef = useRef();
-
+  const history = useHistory();
+  const goToMain = ({ user }) => {
+    history.push({
+      pathname: "/",
+      state: {
+        uid: user.uid, //
+        displayName: user.uid,
+        photoURL: user.photoURL,
+      },
+    });
+    onClose();
+  };
   const handleSubmit = (event) => {
     event.preventDefault();
     const email = emailRef.current.value;
     const password = passwordRef.current.value;
-    console.log(email);
     authService
       .signIn(email, password)
-      .then(console.log("login 성공"))
+      .then((userData) => goToMain(userData))
       .catch((err) => {
         console.log(err);
       });
+    formRef.current.reset();
   };
   return (
-    <form className={styles.loginForm} onSubmit={handleSubmit}>
+    <form ref={formRef} className={styles.loginForm} onSubmit={handleSubmit}>
       <input
         ref={emailRef}
         type="text"

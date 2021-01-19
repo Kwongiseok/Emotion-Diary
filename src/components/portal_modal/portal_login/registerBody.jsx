@@ -1,20 +1,40 @@
 import React, { useRef } from "react";
+import { useHistory } from "react-router-dom";
 import AuthService from "../../../serviceApp/auth_Service";
 import styles from "./loginModal.module.css";
-const RegisterBody = ({ onClickAuth, authService }) => {
+const RegisterBody = ({ authService, onClickAuth, onClose }) => {
   const formRef = useRef();
   const nickNameRef = useRef();
   const emailRef = useRef();
   const passwordRef = useRef();
+  const history = useHistory();
+  const goToMain = ({ user }) => {
+    history.push({
+      pathname: "/",
+      state: {
+        uid: user.uid, //
+        displayName: user.uid,
+        photoURL: user.photoURL,
+      },
+    });
+    onClose();
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const nickName = nickNameRef.current.value || "";
     const email = emailRef.current.value || "";
     const password = passwordRef.current.value || "";
-    authService.signUp(email, password).then((user) => {
-      authService.updateProfile(nickName);
-      authService.signIn(email, password);
-    });
+    authService
+      .signUp(email, password)
+      .then((user) => {
+        authService.updateProfile(nickName);
+        authService
+          .signIn(email, password)
+          .then((data) => goToMain(data))
+          .catch((err) => console.log(err));
+      })
+      .catch((err) => console.log(err));
     formRef.current.reset();
   };
   return (
