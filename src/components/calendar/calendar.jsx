@@ -2,7 +2,12 @@ import React, { useState } from "react";
 import styles from "./calendar.module.css";
 import CalendarBody from "./calendarBody";
 import CalendarHeader from "./calendarHeader";
-const Calendar = ({ diaryList, resetDiaryList }) => {
+const Calendar = ({
+  diaryList,
+  resetDiaryList,
+  onHandleModal,
+  onHandleClickDate,
+}) => {
   const [date, setDate] = useState(new Date());
   const handleDate = (date) => {
     setDate(date);
@@ -14,7 +19,12 @@ const Calendar = ({ diaryList, resetDiaryList }) => {
         date={date}
         resetDiaryList={resetDiaryList}
       />
-      <CalendarBody date={date} diaryList={diaryList} />
+      <CalendarBody
+        date={date}
+        diaryList={diaryList}
+        onHandleModal={onHandleModal}
+        onHandleClickDate={onHandleClickDate}
+      />
     </div>
   );
 };

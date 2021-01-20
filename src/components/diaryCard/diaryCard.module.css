@@ -1,0 +1,12 @@
+.DiaryCard {
+  display: flex;
+  width: 45%;
+  height: 60%;
+  border-radius: 10%;
+  margin-bottom: 2rem;
+}
+
+.dayInfo {
+  display: flex;
+  flex-direction: column;
+}

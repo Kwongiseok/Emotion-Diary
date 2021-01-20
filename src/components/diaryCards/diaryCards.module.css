@@ -1,0 +1,7 @@
+.DiaryCards {
+  display: flex;
+  flex-direction: column;
+  background-color: blanchedalmond;
+  text-align: center;
+  align-items: center;
+}
