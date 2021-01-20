@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import LoginModal from "../portal_modal/portal_login/loginModal";
 import ModalPotal from "../portal_modal/modalPotal";
 import styles from "./main.module.css";
@@ -9,7 +9,6 @@ const Main = ({ authService }) => {
   const [clickRegister, setRegisterClick] = useState(true);
   const [clickLogin, setLoginClick] = useState(true);
   const history = useHistory();
-
   const handleSignUp = () => {
     setModal(true);
     setLoginClick(false);
@@ -26,12 +25,13 @@ const Main = ({ authService }) => {
   const handleMyDiaryPage = () => {
     history.push("/myDiaryPage");
   };
+
   return (
     <div>
       <button onClick={handleSignUp}>회원 가입</button>
       <button onClick={handleMyDiaryPage}>내 일기장</button>
       {modal && (
-        <ModalPotal onClose={handleClose}>
+        <ModalPotal>
           <LoginModal
             onClose={handleClose}
             authService={authService}

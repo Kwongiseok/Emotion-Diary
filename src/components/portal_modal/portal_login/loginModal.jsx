@@ -1,5 +1,5 @@
 import { render } from "@testing-library/react";
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import PortalFooter from "../portal_footer/portalFooter";
 import PortalHeader from "../portal_header/portal-header";
 import LoginBody from "./loginBody";
@@ -13,9 +13,19 @@ const LoginModal = ({
   clickRegister,
   clickLogin,
 }) => {
+  const modalRef = useRef();
+  const handleClose = (event) => {
+    if (modalRef.current && !modalRef.current.contains(event.target)) onClose();
+  };
+  useEffect(() => {
+    window.addEventListener("click", handleClose);
+    return () => {
+      window.removeEventListener("click", handleClose);
+    };
+  }, []);
   return (
     <div className={styles.loginModal}>
-      <div className={styles.login}>
+      <div ref={modalRef} className={styles.login}>
         <PortalHeader loginOrSignUp={"로그인"} />
         {clickLogin ? (
           <LoginBody

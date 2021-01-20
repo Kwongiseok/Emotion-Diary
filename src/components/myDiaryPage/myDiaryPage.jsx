@@ -61,8 +61,8 @@ const MyDiaryPage = (props) => {
       />
       <DiaryCards diaryList={diaryList} />
       {diaryEditModal && (
-        <ModalPotal onClose={handleCloseModal}>
-          <DiaryEditForm date={clickDate} />
+        <ModalPotal>
+          <DiaryEditForm date={clickDate} onClose={handleCloseModal} />
         </ModalPotal>
       )}
     </div>

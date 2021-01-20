@@ -1,10 +1,40 @@
-.DiaryEditForm {
+.DiaryEditModal {
   position: fixed;
   z-index: 1000;
   text-align: center;
+  align-items: center;
   background-color: #00000080;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
+}
+.DiaryEditForm {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 70%;
+  width: 35%;
+  margin: auto;
+  background-color: white;
+  border-radius: 5%;
+  text-align: center;
+  align-items: center;
+}
+.imageBox {
+  width: 50%;
+}
+.image {
+  width: 50%;
+}
+
+.textArea {
+  width: 90%;
+  height: 45vh;
+  overflow: hidden;
+  border: 0;
+}
+.textArea:focus {
+  outline: none;
 }

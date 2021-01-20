@@ -1,12 +1,9 @@
-import React from "react";
+import React, { memo } from "react";
 import ReactDOM from "react-dom";
 
-const ModalPotal = ({ children, onClose }) => {
+const ModalPotal = memo(({ children }) => {
   const el = document.getElementById("modal");
-  el.addEventListener("click", () => {
-    onClose();
-  });
   return ReactDOM.createPortal(children, el);
-};
+});
 
 export default ModalPotal;
