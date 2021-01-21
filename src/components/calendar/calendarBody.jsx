@@ -26,9 +26,11 @@ const CalendarBody = ({
   const receiveDiaryList = () => {}; // 년,월을 기준으로 데이터를 받아올 예정
 
   const handleShowingBox = (day) => {
+    // 클릭했을 때 새로운 edit창을 띄움
     onHandleClickDate(new Date(headerYear, headerMonth, day));
     onHandleModal();
   };
+
   return (
     <div className={styles.CalendarBody}>
       <div className={styles.weekDays}>
@@ -54,8 +56,8 @@ const CalendarBody = ({
                 let newMonth = getMonth(newDay);
 
                 let showingDay = headerMonth === newMonth ? `${formDate}` : "";
-                let dayDiary = diaryList.find(
-                  (item) => item.day === showingDay
+                let dayDiary = Object.keys(diaryList).find(
+                  (key) => diaryList[key].day === showingDay
                 );
                 // 이미지 삽입해야함!
                 let todaySelector =

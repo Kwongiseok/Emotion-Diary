@@ -4,8 +4,8 @@ import styles from "./diaryCards.module.css";
 const DiaryCards = ({ diaryList }) => {
   return (
     <div className={styles.DiaryCards}>
-      {diaryList.map((item) => (
-        <DiaryCard cardInfo={item} key={item.id} />
+      {Object.keys(diaryList).map((key) => (
+        <DiaryCard cardInfo={diaryList[key]} key={key} />
       ))}
     </div>
   );
