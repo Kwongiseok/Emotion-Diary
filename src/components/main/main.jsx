@@ -6,24 +6,21 @@ import { useHistory } from "react-router-dom";
 
 const Main = ({ authService }) => {
   const [modal, setModal] = useState(false);
-  const [clickRegister, setRegisterClick] = useState(true);
-  const [clickLogin, setLoginClick] = useState(true);
   const history = useHistory();
+  const historyState = history.location.state;
+
   const handleSignUp = () => {
     setModal(true);
-    setLoginClick(false);
-  };
-
-  const handleClickBtn = () => {
-    setRegisterClick(!clickRegister);
-    setLoginClick(!clickLogin);
   };
 
   const handleClose = () => {
     setModal(false);
   };
   const handleMyDiaryPage = () => {
-    history.push("/myDiaryPage");
+    console.log(historyState);
+    history.push({
+      pathname: "/myDiaryPage",
+    });
   };
 
   return (
@@ -32,13 +29,7 @@ const Main = ({ authService }) => {
       <button onClick={handleMyDiaryPage}>내 일기장</button>
       {modal && (
         <ModalPotal>
-          <LoginModal
-            onClose={handleClose}
-            authService={authService}
-            onClickAuth={handleClickBtn}
-            clickRegister={clickRegister}
-            clickLogin={clickLogin}
-          />
+          <LoginModal onClose={handleClose} authService={authService} />
         </ModalPotal>
       )}
     </div>

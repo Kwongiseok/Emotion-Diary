@@ -24,7 +24,10 @@ const DiaryEditForm = ({
       id: editDate, // or uuid
       title: titleRef.current.value || "",
       date: date,
-      wearther: weatherRef.current.value || "",
+      year: editYear,
+      month: editMonth,
+      day: editDay,
+      weather: weatherRef.current.value || "",
       diaryText: diaryTextRef.current.value || "",
       emotion: "😀", // 이모션 메커니즘 생성 후
       imageURL: "",

@@ -5,14 +5,14 @@ import DiaryEditForm from "../diaryEditForm/diaryEditForm";
 import Header from "../header/header";
 import ModalPotal from "../portal_modal/modalPotal";
 import styles from "./myDiaryPage.module.css";
-const MyDiaryPage = (props) => {
+const MyDiaryPage = ({ dbService }) => {
   const [diaryList, setDiaryList] = useState({
     1: {
       id: 1,
       year: 2021,
       month: 1,
       imageURL:
-        "https://res.cloudinary.com/dsb0lexgl/image/upload/v1610608587/erhduildqkactvclhik6.png",
+        "https://res.cloudinary.com/dsb0lexgl/image/upload/ar_16:9,c_fill,e_sharpen,g_auto,h_250,w_400/v1610618431/dpgad0aikgjmtr9gxgfs.png",
       day: 19,
       title: "오늘의 일기",
       weather: "good",
@@ -23,7 +23,8 @@ const MyDiaryPage = (props) => {
       id: 2,
       year: 2021,
       month: 1,
-      imageURL: "",
+      imageURL:
+        "https://res.cloudinary.com/dsb0lexgl/image/upload/ar_16:9,c_fill,e_sharpen,g_auto,h_250,w_400/v1610618431/dpgad0aikgjmtr9gxgfs.png",
       score: 3, // 감정의 정도
       day: 19,
       title: "또 다른 일기",
@@ -77,7 +78,7 @@ const MyDiaryPage = (props) => {
           <DiaryEditForm
             date={clickDate}
             onClose={handleCloseModal}
-            // calendarDiary={diaryList["9"]} // 임시용
+            calendarDiary={diaryList[1]} // 임시용
             createOrUpdateDiary={createOrUpdateDiary}
           />
         </ModalPotal>

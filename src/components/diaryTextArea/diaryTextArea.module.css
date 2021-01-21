@@ -1,0 +1,4 @@
+.DiaryTextArea {
+  display: flex;
+  flex-direction: column;
+}

@@ -14,7 +14,7 @@ const RegisterBody = ({ authService, onClickAuth, onClose }) => {
       state: {
         uid: user.uid, //
         displayName: user.uid,
-        photoURL: user.photoURL,
+        imageURL: user.imageURL,
       },
     });
     onClose();

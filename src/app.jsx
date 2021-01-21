@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Main from "./components/main/main";
 import MyDiaryPage from "./components/myDiaryPage/myDiaryPage";
 
-function App({ authService }) {
+function App({ authService, dbService }) {
   return (
     <div>
       <Router>
@@ -12,7 +12,7 @@ function App({ authService }) {
             <Main authService={authService} />
           </Route>
           <Route path="/myDiaryPage">
-            <MyDiaryPage />
+            <MyDiaryPage dbService={dbService} />
           </Route>
         </Switch>
       </Router>
