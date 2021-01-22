@@ -1,17 +1,12 @@
-import React, { useEffect, useRef } from "react";
+import React, { memo, useEffect, useRef } from "react";
 import styles from "./diaryEditForm.module.css";
 import { getDate, getYear, getMonth, getDay } from "date-fns";
-const DiaryEditForm = ({
-  date,
-  onClose,
-  calendarDiary,
-  createOrUpdateDiary,
-}) => {
+const DiaryEditForm = ({ date, onClose, dayDiary, createOrUpdateDiary }) => {
   const editYear = getYear(date);
   const editMonth = getMonth(date);
   const editDate = getDate(date);
   const editDay = getDay(date);
-  const { title, imageURL, diaryText } = calendarDiary || "";
+  const { title, imageURL, diaryText } = dayDiary ? dayDiary : "";
 
   const modalRef = useRef();
   const titleRef = useRef();
@@ -55,10 +50,10 @@ const DiaryEditForm = ({
     } else {
       event.preventDefault();
       {
-        calendarDiary
+        dayDiary
           ? createOrUpdateDiary({
               // 작성된 일기가 있을 때,
-              ...calendarDiary,
+              ...dayDiary,
               [event.currentTarget.name]: event.currentTarget.value,
             })
           : createOrUpdateDiary({
@@ -96,7 +91,7 @@ const DiaryEditForm = ({
             type="text"
             placeholder={"Title"}
             name="title"
-            value={title}
+            value={title || ""}
             onChange={onChange}
           />
           <textarea
@@ -104,7 +99,7 @@ const DiaryEditForm = ({
             className={styles.textArea}
             placeholder={true ? "오늘 하루 어땠나요?" : "오늘 하루 어땠나요?"}
             name="diaryText"
-            value={diaryText}
+            value={diaryText || ""}
             onChange={onChange}
           />
         </form>

@@ -8,17 +8,12 @@ class DatabaseService {
           userId +
           "/diary/" +
           `${
-            diaryInfo["year"] +
-            "/" +
-            diaryInfo["month"] +
-            "/" +
-            diaryInfo["day"]
+            diaryInfo["year"] + "/" + diaryInfo["month"] + "/" + diaryInfo["id"]
           }`
       )
       .set({
         id: diaryInfo["id"],
         title: diaryInfo["title"],
-        date: diaryInfo["date"],
         year: diaryInfo["year"],
         month: diaryInfo["month"],
         day: diaryInfo["day"],
@@ -27,6 +22,16 @@ class DatabaseService {
         emotion: diaryInfo["emotion"],
         imageURL: diaryInfo["imageURL"],
       });
+  }
+  readMonthDiary(uid, year, month) {
+    return firebaseDatabase
+      .ref("/users/" + uid + "/" + year + "/" + month)
+      .once("value");
+  }
+  readDayDiary(uid, year, month, date) {
+    return firebaseDatabase
+      .ref("/users/" + uid + "/diary/" + year + "/" + month + "/" + date)
+      .once("value");
   }
 }
 

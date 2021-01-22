@@ -17,9 +17,14 @@ const Main = ({ authService }) => {
     setModal(false);
   };
   const handleMyDiaryPage = () => {
-    console.log(historyState);
+    const userId = historyState.uid;
+    const imgURL = historyState.imageURL;
     history.push({
       pathname: "/myDiaryPage",
+      state: {
+        uid: userId,
+        imageURL: imgURL,
+      },
     });
   };
 
