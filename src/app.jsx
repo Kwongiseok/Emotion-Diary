@@ -12,7 +12,7 @@ function App({ authService, dbService }) {
             <Main authService={authService} />
           </Route>
           <Route path="/myDiaryPage">
-            <MyDiaryPage dbService={dbService} />
+            <MyDiaryPage dbService={dbService} authService={authService} />
           </Route>
         </Switch>
       </Router>

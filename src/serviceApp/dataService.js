@@ -25,7 +25,7 @@ class DatabaseService {
   }
   readMonthDiary(uid, year, month) {
     return firebaseDatabase
-      .ref("/users/" + uid + "/" + year + "/" + month)
+      .ref("/users/" + uid + "/diary/" + year + "/" + month)
       .once("value");
   }
   readDayDiary(uid, year, month, date) {

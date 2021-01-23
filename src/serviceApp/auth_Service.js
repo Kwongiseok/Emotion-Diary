@@ -1,9 +1,12 @@
 import { firebaseAuth, googleProvider } from "./firebaseApp";
 
 class AuthService {
-  login() {
+  logIn() {
     const authProvide = googleProvider;
     return firebaseAuth.signInWithPopup(authProvide);
+  }
+  logOut() {
+    return firebaseAuth.signOut();
   }
   signUp(email, password) {
     return firebaseAuth.createUserWithEmailAndPassword(email, password);

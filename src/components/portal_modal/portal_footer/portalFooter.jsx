@@ -1,25 +1,17 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
 
-const PortalFooter = ({ authService, onClose }) => {
-  const history = useHistory();
-  const goToMaker = ({ user }) => {
-    history.push({
-      pathname: "/",
-      state: {
-        uid: user.uid, //
-        displayName: user.uid,
-        imageURL: user.imageURL,
-      },
-    });
+const PortalFooter = ({ authService, onClose, loginSaveUid }) => {
+  const loginSuccess = ({ user }) => {
+    loginSaveUid(user.uid);
+    console.log(user.uid);
     onClose();
   };
-  const handleLogin = () => {
-    authService.login().then((data) => goToMaker(data));
+  const handleGoogleLogin = () => {
+    authService.logIn().then((data) => loginSuccess(data));
   };
   return (
     <div>
-      <button onClick={handleLogin}>Google</button>
+      <button onClick={handleGoogleLogin}>Google</button>
     </div>
   );
 };

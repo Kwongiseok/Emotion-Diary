@@ -1,9 +1,9 @@
-import React from "react";
+import React, { memo } from "react";
 import { MdChevronLeft, MdChevronRight } from "react-icons/md";
 import { subMonths, addMonths, getYear, getMonth } from "date-fns";
 import styles from "./calendar.module.css";
 
-const CalendarHeader = ({ onSetDate, date, resetDiaryList }) => {
+const CalendarHeader = memo(({ onSetDate, date, resetDiaryList }) => {
   const months = [
     "Jan",
     "Feb",
@@ -48,6 +48,6 @@ const CalendarHeader = ({ onSetDate, date, resetDiaryList }) => {
       </button>
     </div>
   );
-};
+});
 
 export default CalendarHeader;

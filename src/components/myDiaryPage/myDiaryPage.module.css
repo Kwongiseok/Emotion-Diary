@@ -1,4 +1,10 @@
 .MyDiaryPage {
-  flex: 1;
   display: flex;
+  flex-direction: column;
+}
+
+.body {
+  display: flex;
+  width: 80%;
+  height: 100vh;
 }

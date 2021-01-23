@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./calendar.module.css";
 import {
   getDate,
@@ -10,6 +10,7 @@ import {
   getWeeksInMonth,
 } from "date-fns";
 import ShowingDayBox from "./showingDayBox";
+import ShowingEmptyBox from "./showingEmptyBox";
 const CalendarBody = ({
   date,
   diaryList,
@@ -23,7 +24,6 @@ const CalendarBody = ({
   const weeksCountInMonth = getWeeksInMonth(date);
   const dayRange = Array(7).fill(1);
   const weekRange = Array(weeksCountInMonth).fill(1);
-  const receiveDiaryList = () => {}; // 년,월을 기준으로 데이터를 받아올 예정
 
   const handleShowingBox = (day) => {
     // 클릭했을 때 새로운 edit창을 띄움
@@ -56,10 +56,14 @@ const CalendarBody = ({
                 let newMonth = getMonth(newDay);
 
                 let showingDay = headerMonth === newMonth ? `${formDate}` : "";
-                let dayDiary = Object.keys(diaryList).find(
-                  (key) => diaryList[key].day === showingDay
-                );
+
+                let dayDiary =
+                  diaryList &&
+                  Object.keys(diaryList).find(
+                    (key) => diaryList[key].day === showingDay
+                  );
                 // 이미지 삽입해야함!
+
                 let todaySelector =
                   format(newDay, "yyyy-MM-d") ===
                   format(
@@ -75,7 +79,7 @@ const CalendarBody = ({
                     onHandleBox={handleShowingBox}
                   />
                 ) : (
-                  <ShowingDayBox key={dayIndex} />
+                  <ShowingEmptyBox key={dayIndex} />
                 );
               })}
             </div>

@@ -6,7 +6,7 @@ import LoginBody from "./loginBody";
 import styles from "./loginModal.module.css";
 import RegisterBody from "./registerBody";
 
-const LoginModal = ({ onClose, authService }) => {
+const LoginModal = ({ onClose, authService, loginSaveUid }) => {
   const [clickLogin, setLoginClick] = useState(true);
   const onClickAuth = () => {
     setLoginClick(!clickLogin);
@@ -33,18 +33,24 @@ const LoginModal = ({ onClose, authService }) => {
         <PortalHeader loginOrSignUp={clickLogin ? "로그인" : "회원 가입"} />
         {clickLogin ? (
           <LoginBody
-            onClickAuth={onClickAuth}
             authService={authService}
+            onClickAuth={onClickAuth}
             onClose={onClose}
+            loginSaveUid={loginSaveUid}
           />
         ) : (
           <RegisterBody
-            onClickAuth={onClickAuth}
             authService={authService}
+            onClickAuth={onClickAuth}
             onClose={onClose}
+            loginSaveUid={loginSaveUid}
           />
         )}
-        <PortalFooter authService={authService} onClose={onClose} />
+        <PortalFooter
+          authService={authService}
+          onClose={onClose}
+          loginSaveUid={loginSaveUid}
+        />
         <button onClick={onClose}>close</button>
       </div>
     </div>

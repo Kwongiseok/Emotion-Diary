@@ -1,20 +1,11 @@
 import React, { useRef } from "react";
-import { useHistory } from "react-router-dom";
 import styles from "./loginModal.module.css";
-const LoginBody = ({ authService, onClickAuth, onClose }) => {
+const LoginBody = ({ authService, onClickAuth, onClose, loginSaveUid }) => {
   const formRef = useRef();
   const emailRef = useRef();
   const passwordRef = useRef();
-  const history = useHistory();
-  const goToMain = ({ user }) => {
-    history.push({
-      pathname: "/",
-      state: {
-        uid: user.uid, //
-        displayName: user.uid,
-        photoURL: user.photoURL,
-      },
-    });
+  const successLogin = ({ user }) => {
+    loginSaveUid(user.uid);
     onClose();
   };
   const handleSubmit = (event) => {
@@ -23,7 +14,7 @@ const LoginBody = ({ authService, onClickAuth, onClose }) => {
     const password = passwordRef.current.value;
     authService
       .signIn(email, password)
-      .then((userData) => goToMain(userData))
+      .then((userData) => successLogin(userData))
       .catch((err) => {
         console.log(err);
       });

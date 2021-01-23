@@ -6,55 +6,60 @@ import Header from "../header/header";
 import ModalPotal from "../portal_modal/modalPotal";
 import styles from "./myDiaryPage.module.css";
 import { useHistory } from "react-router-dom";
-import { getDate, getYear, getMonth, getDay } from "date-fns";
+import { getDate, getYear, getMonth } from "date-fns";
 
-const MyDiaryPage = ({ dbService }) => {
+const MyDiaryPage = ({ authService, dbService }) => {
   const history = useHistory();
   const historyState = history.location.state;
   const [uid, setUid] = useState(historyState && historyState.uid);
-  const [diaryList, setDiaryList] = useState({
-    1: {
-      id: 1,
-      year: 2021,
-      month: 1,
-      imageURL:
-        "https://res.cloudinary.com/dsb0lexgl/image/upload/ar_16:9,c_fill,e_sharpen,g_auto,h_250,w_400/v1610618431/dpgad0aikgjmtr9gxgfs.png",
-      day: 19,
-      title: "오늘의 일기",
-      weather: "good",
-      diaryText: "일기장이에요~~",
-      emotion: "😀",
-    },
-  });
+  const [diaryList, setDiaryList] = useState({});
   const [diaryEditModal, setEditModal] = useState(false); // 일기장 편집창 Modal로 구현
-  // const [selectedDiary, setSelectedDiary] = useState(null);
+  const [date, setDate] = useState(new Date());
   const [clickDate, setClickDate] = useState(""); // 달력에서 클릭한 날짜를 받아옴
   const [dayDiary, setDayDiary] = useState("");
 
-  const handleClickDate = useCallback((date) => {
-    setClickDate(date);
-    // setDayDiary("");
-  });
+  const handleClaendarDate = useCallback(
+    (newDate) => {
+      setDate(newDate);
+    },
+    [setDate]
+  );
+  const handleClickDate = useCallback(
+    (date) => {
+      setClickDate(date);
+    },
+    [setClickDate]
+  );
+
   const resetDiaryList = useCallback(() => {
     setDiaryList([]);
-  });
+  }, [setDiaryList]);
   const handleOpenModal = useCallback(() => {
     setEditModal(true);
-  });
+  }, [setEditModal]);
   const handleCloseModal = useCallback(() => {
     setEditModal(false);
-  });
-  const searchDiaryList = (uid, year, month) => {}; // 해당 년,월에 맞는 List를 찾아옴.
+  }, [setEditModal]);
 
-  const searchClickDateDiary = useCallback((uid, year, month, date) => {
-    // 달력에서 클릭한 날의 일기 데이트를 받아오는 것
-    console.log(uid, year, month, date);
-    dbService
-      .readDayDiary(uid, year, month, date)
-      .then((snaphot) => setDayDiary(snaphot.val()));
-  });
+  const searchDiaryList = useCallback(
+    (uid, year, month) => {
+      dbService
+        .readMonthDiary(uid, year, month)
+        .then((snapshot) => setDiaryList(snapshot.val()));
+    },
+    [dbService]
+  ); // 해당 년,월에 맞는 List를 찾아옴.
 
-  const createOrUpdateDiary = useCallback((diary) => {
+  const searchClickDateDiary = useCallback(
+    (uid, year, month, date) => {
+      // 달력에서 클릭한 날의 일기 데이트를 받아오는 것
+      dbService
+        .readDayDiary(uid, year, month, date)
+        .then((snapshot) => setDayDiary(snapshot.val()));
+    },
+    [dbService]
+  );
+  const createOrUpdateDiary = (diary) => {
     setDayDiary(diary);
     setDiaryList((diarys) => {
       // 업데이트 전 일기들을 받아와서 callback 함수등록
@@ -63,7 +68,7 @@ const MyDiaryPage = ({ dbService }) => {
       return updated;
     });
     dbService.writeDiaryData(uid, diary);
-  });
+  };
 
   useEffect(() => {
     if (!uid) return;
@@ -73,18 +78,27 @@ const MyDiaryPage = ({ dbService }) => {
       getMonth(clickDate),
       getDate(clickDate)
     );
-  }, [clickDate]);
+  }, [clickDate, uid, searchClickDateDiary]);
+
+  useEffect(() => {
+    if (!uid) return;
+    searchDiaryList(uid, getYear(date), getMonth(date));
+  }, [date, uid, searchDiaryList]);
 
   return (
-    <div className="MyDiaryPage">
-      <Header />
-      <Calendar
-        diaryList={diaryList}
-        resetDiaryList={resetDiaryList}
-        onHandleModal={handleOpenModal}
-        onHandleClickDate={handleClickDate}
-      />
-      <DiaryCards diaryList={diaryList} />
+    <div className={styles.MyDiaryPage}>
+      <Header authService={authService} />
+      <section className={styles.body}>
+        <DiaryCards diaryList={diaryList} />
+        <Calendar
+          date={date}
+          diaryList={diaryList}
+          resetDiaryList={resetDiaryList}
+          onHandleModal={handleOpenModal}
+          onHandleClickDate={handleClickDate}
+          setDate={handleClaendarDate}
+        />
+      </section>
       {diaryEditModal && (
         <ModalPotal>
           <DiaryEditForm
