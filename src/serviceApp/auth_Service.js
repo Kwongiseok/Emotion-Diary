@@ -14,6 +14,11 @@ class AuthService {
   signIn(email, password) {
     return firebaseAuth.signInWithEmailAndPassword(email, password);
   }
+  onAuthChange(onUserChanged) {
+    firebaseAuth.onAuthStateChanged((user) => {
+      onUserChanged(user);
+    });
+  }
   updateProfile(nickName) {
     const user = firebaseAuth.currentUser;
     user

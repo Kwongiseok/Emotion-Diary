@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useState } from "react";
+import React, {  useCallback } from "react";
 import styles from "./calendar.module.css";
 import CalendarBody from "./calendarBody";
 import CalendarHeader from "./calendarHeader";

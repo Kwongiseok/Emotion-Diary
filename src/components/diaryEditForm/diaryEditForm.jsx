@@ -1,7 +1,13 @@
 import React, { useEffect, useRef } from "react";
 import styles from "./diaryEditForm.module.css";
 import { getDate, getYear, getMonth, getDay } from "date-fns";
-const DiaryEditForm = ({ date, onClose, createOrUpdateDiary, dayDiary }) => {
+const DiaryEditForm = ({
+  FileInput,
+  date,
+  onClose,
+  createOrUpdateDiary,
+  dayDiary,
+}) => {
   const editYear = getYear(date);
   const editMonth = getMonth(date);
   const editDate = getDate(date);
@@ -80,12 +86,15 @@ const DiaryEditForm = ({ date, onClose, createOrUpdateDiary, dayDiary }) => {
               alt="upload"
             />
           ) : (
-            <button className={styles.image}>+</button>
+            <FileInput />
           )}
         </div>
         <div className={styles.icons}>
           <select ref={weatherRef} className={styles.weather}>
-            <option value="☁️">☁️</option>
+            <option value="☀️">☀️</option>
+            <option value="🌥">🌥</option>
+            <option value="🌨">🌨</option>
+            <option value="☔">☔</option>
           </select>
         </div>
         <form className={styles.formBox}>

@@ -2,14 +2,13 @@ import React, { useRef } from "react";
 import { useHistory } from "react-router-dom";
 import AuthService from "../../../serviceApp/auth_Service";
 import styles from "./loginModal.module.css";
-const RegisterBody = ({ authService, onClickAuth, onClose, loginSaveUid }) => {
+const RegisterBody = ({ authService, onClickAuth, onClose }) => {
   const formRef = useRef();
   const nickNameRef = useRef();
   const emailRef = useRef();
   const passwordRef = useRef();
   const history = useHistory();
   const goToMain = ({ user }) => {
-    // loginSaveUid(user.uid);
     onClose();
   };
 

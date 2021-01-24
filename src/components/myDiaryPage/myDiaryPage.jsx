@@ -8,7 +8,7 @@ import styles from "./myDiaryPage.module.css";
 import { useHistory } from "react-router-dom";
 import { getDate, getYear, getMonth } from "date-fns";
 
-const MyDiaryPage = ({ authService, dbService }) => {
+const MyDiaryPage = ({ FileInput, authService, dbService }) => {
   const history = useHistory();
   const historyState = history.location.state;
   const [uid, setUid] = useState(historyState && historyState.uid);
@@ -85,9 +85,19 @@ const MyDiaryPage = ({ authService, dbService }) => {
     searchDiaryList(uid, getYear(date), getMonth(date));
   }, [date, uid, searchDiaryList]);
 
+  useEffect(() => {
+    authService.onAuthChange((user) => {
+      if (user) {
+        setUid(historyState && historyState.id);
+      } else {
+        history.push("/");
+      }
+    });
+  }, [uid, authService, history, historyState]);
+
   return (
     <div className={styles.MyDiaryPage}>
-      <Header authService={authService} />
+      <Header authService={authService} uid={uid} />
       <section className={styles.body}>
         <DiaryCards diaryList={diaryList} />
         <Calendar
@@ -102,6 +112,7 @@ const MyDiaryPage = ({ authService, dbService }) => {
       {diaryEditModal && (
         <ModalPotal>
           <DiaryEditForm
+            FileInput={FileInput}
             date={clickDate}
             onClose={handleCloseModal}
             dayDiary={dayDiary} // 임시용
