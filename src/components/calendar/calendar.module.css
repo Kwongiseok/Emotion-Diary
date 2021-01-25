@@ -4,6 +4,7 @@
   align-items: center;
   justify-content: center;
   width: 50%;
+  flex-basis: 25%;
 }
 .CalendarHeader {
   user-select: none;

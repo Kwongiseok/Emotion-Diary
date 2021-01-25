@@ -1,11 +1,10 @@
 import React, { useRef } from "react";
 import styles from "./loginModal.module.css";
-const LoginBody = ({ authService, onClickAuth, onClose, loginSaveUid }) => {
+const LoginBody = ({ authService, onClickAuth, onClose }) => {
   const formRef = useRef();
   const emailRef = useRef();
   const passwordRef = useRef();
   const successLogin = ({ user }) => {
-    loginSaveUid(user.uid);
     onClose();
   };
   const handleSubmit = (event) => {

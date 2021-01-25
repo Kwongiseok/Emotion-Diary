@@ -1,13 +1,14 @@
 .DiaryCard {
   display: flex;
-  width: 60%;
-  height: 30%;
+  width: 80%;
+  height: 20vh;
   margin-bottom: 1rem;
   margin-top: 1rem;
 }
 
 .previewCard {
   width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: row;
   background-color: #fafafa;
@@ -39,4 +40,11 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+.title {
+  height: 100%;
+  text-align: center;
+  align-items: center;
+  padding-top: 20%;
+  font-size: 1.2em;
 }

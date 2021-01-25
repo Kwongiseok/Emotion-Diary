@@ -69,7 +69,9 @@ const MyDiaryPage = ({ FileInput, authService, dbService }) => {
     });
     dbService.writeDiaryData(uid, diary);
   };
-
+  const onFileChange = (diary,url) => {
+    
+  }
   useEffect(() => {
     if (!uid) return;
     searchClickDateDiary(

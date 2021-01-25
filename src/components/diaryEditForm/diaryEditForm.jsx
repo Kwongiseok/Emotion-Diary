@@ -17,8 +17,8 @@ const DiaryEditForm = ({
   const modalRef = useRef();
   const titleRef = useRef();
   const weatherRef = useRef();
-  const imageRef = useRef();
   const diaryTextRef = useRef();
+  const formRef = useRef();
   const weekDays = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
 
   const makeNewDiary = () => {
@@ -40,6 +40,10 @@ const DiaryEditForm = ({
   const handleClose = (event) => {
     // modal DOM 내부에 editForm 외에 클릭했을 때 닫힘
     if (modalRef.current && !modalRef.current.contains(event.target)) onClose();
+  };
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    onClose();
   };
 
   useEffect(() => {
@@ -71,6 +75,20 @@ const DiaryEditForm = ({
     }
   };
 
+  const onFileChange = (file) => {
+    dayDiary
+      ? createOrUpdateDiary({
+          // 작성된 일기가 있을 때,
+          ...dayDiary,
+          imageURL: file.url,
+        })
+      : createOrUpdateDiary({
+          // 작성된 일기가 없을 때,
+          ...makeNewDiary(),
+          imageURL: file.url,
+        });
+  };
+
   return (
     <div className={styles.DiaryEditModal}>
       <div ref={modalRef} className={styles.DiaryEditForm}>
@@ -78,16 +96,7 @@ const DiaryEditForm = ({
           className={styles.header}
         >{`${editYear} ${weekDays[editDay]}`}</div>
         <div className={styles.imageBox}>
-          {imageURL ? (
-            <img
-              ref={imageRef}
-              className={styles.image}
-              src={imageURL}
-              alt="upload"
-            />
-          ) : (
-            <FileInput />
-          )}
+          <FileInput onFileChange={onFileChange} imageURL={imageURL} />
         </div>
         <div className={styles.icons}>
           <select ref={weatherRef} className={styles.weather}>
@@ -97,7 +106,7 @@ const DiaryEditForm = ({
             <option value="☔">☔</option>
           </select>
         </div>
-        <form className={styles.formBox}>
+        <form ref={formRef} className={styles.formBox} onSubmit={handleSubmit}>
           <input
             ref={titleRef}
             className={styles.title}
@@ -105,6 +114,7 @@ const DiaryEditForm = ({
             placeholder={"Title"}
             name="title"
             value={title || ""}
+            maxLength="18"
             onChange={onChange}
           />
           <textarea

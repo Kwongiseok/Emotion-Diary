@@ -1,10 +1,9 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 
-const PortalFooter = ({ authService, onClose, loginSaveUid }) => {
+const PortalFooter = ({ authService, onClose}) => {
   const history = useHistory();
   const loginSuccess = ({ user }) => {
-    // loginSaveUid(user.uid);
     history.push({
       pathname: "/myDiaryPage",
       state: { id: user.uid },

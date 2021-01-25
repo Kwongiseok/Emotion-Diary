@@ -22,7 +22,7 @@ const DiaryCard = ({ cardInfo }) => {
             {cardInfo.imageURL ? (
               <img className={styles.image} src={cardInfo.imageURL} />
             ) : (
-              <section className={styles.image}>{cardInfo.title}</section>
+              <div className={styles.title}>{cardInfo.title}</div>
             )}
           </div>
         </div>
