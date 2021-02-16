@@ -8,8 +8,7 @@ const DiaryForm = ({
   onClick,
 }) => (
   <div className={styles.DiaryForm} onClick={onClick}>
-    <DiaryImageArea imageURL={imageURL} />
-    <DiaryTextArea diaryText={diaryText} emotion={emotion} weather={weather} />
+    hi
   </div>
 );
 

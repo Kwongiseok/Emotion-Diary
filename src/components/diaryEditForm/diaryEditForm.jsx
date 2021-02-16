@@ -52,7 +52,7 @@ const DiaryEditForm = ({
     return () => {
       window.removeEventListener("click", handleClose);
     };
-  }, []);
+  }, [handleClose]);
 
   const onChange = (event) => {
     if (event.currentTarget == null) {
