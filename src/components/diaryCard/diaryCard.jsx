@@ -1,33 +1,30 @@
+/* eslint-disable jsx-a11y/alt-text */
 import React, { useState } from "react";
-import DiaryForm from "../diaryForm/diaryForm";
-// import DiaryImageArea from "../diaryImageArea/diaryImageArea";
+import FlippedCard from "../flipCard/flipCard";
 import styles from "./diaryCard.module.css";
+import ReactCardFlip from "react-card-flip";
+import PreViewCard from "../flipCard/preViewCard";
+
 const DiaryCard = ({ cardInfo }) => {
-  const [selected, setSelected] = useState(false);
+  const [isFlipped, setisFlipped] = useState(true);
   const handleClick = () => {
-    setSelected(!selected);
+    setisFlipped(!isFlipped);
   };
   return (
-    <div className={styles.DiaryCard}>
-      {selected ? (
-        <DiaryForm cardInfo={cardInfo} onClick={handleClick} />
-      ) : (
-        <div className={styles.previewCard} onClick={handleClick}>
-          <div className={styles.dayInfo}>
-            <h1 className={styles.dayTitle}>{cardInfo.id}</h1>
-            <span className={styles.dayOfWeek}>{cardInfo.day}</span>
-            <span className={styles.weather}>{cardInfo.weather}</span>
-          </div>
-          <div className={styles.imageBox}>
-            {cardInfo.imageURL ? (
-              <img className={styles.image} src={cardInfo.imageURL} />
-            ) : (
-              <div className={styles.title}>{cardInfo.title}</div>
-            )}
-          </div>
-        </div>
-      )}
-    </div>
+    <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal">
+      <div className={styles.DiaryCard}>
+        <FlippedCard
+          cardInfo={cardInfo}
+          handleClick={handleClick}
+        ></FlippedCard>
+      </div>
+      <div className={styles.DiaryCard}>
+        <PreViewCard
+          cardInfo={cardInfo}
+          handleClick={handleClick}
+        ></PreViewCard>
+      </div>
+    </ReactCardFlip>
   );
 };
 

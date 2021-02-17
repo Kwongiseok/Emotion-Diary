@@ -1,3 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable no-lone-blocks */
+
 import React, { useEffect, useRef } from "react";
 import styles from "./diaryEditForm.module.css";
 import { getDate, getYear, getMonth, getDay } from "date-fns";

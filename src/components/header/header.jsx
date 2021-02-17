@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useState } from "react";
+import React, { memo, useState } from "react";
 import { useHistory } from "react-router-dom";
 import styles from "./header.module.css";
 import LoginModal from "../portal_modal/portal_login/loginModal";

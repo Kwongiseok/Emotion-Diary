@@ -1,4 +1,3 @@
-import { render } from "@testing-library/react";
 import React, { useEffect, useRef, useState } from "react";
 import PortalFooter from "../portal_footer/portalFooter";
 import PortalHeader from "../portal_header/portal-header";
