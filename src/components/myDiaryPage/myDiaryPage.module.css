@@ -1,12 +1,11 @@
 .MyDiaryPage {
   display: flex;
   flex-direction: column;
-  overflow-y: auto;
 }
 
 .body {
   display: flex;
-  margin-left: 20%;
   width: 100%;
   height: 100vh;
+  overflow-y: auto;
 }

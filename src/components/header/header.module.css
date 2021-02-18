@@ -1,5 +1,8 @@
 .header {
   display: flex;
+  position: sticky;
+  width: 100%;
+  flex-wrap: wrap;
   flex-direction: row;
   border-bottom: solid 2px antiquewhite;
   text-align: center;
@@ -14,10 +17,17 @@
 }
 .title {
   margin: 0;
+  font-size: 1rem;
 }
 .navMenus {
   right: 10%;
 }
 .navMenu {
-  padding-right: 2em;
+  font-size: 1rem;
+  padding: 1rem;
+  margin-right: 4rem;
+}
+.navMenu:hover {
+  background-color: #00000020;
+  cursor: pointer;
 }

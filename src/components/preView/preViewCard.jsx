@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./preViewCard.module.css";
 const PreViewCard = (
-  { cardInfo: { weather, day, id, emotion, title, imageURL } },
+  { cardInfo: { weather, day, id, emotion, title, imageURL, diaryText } },
   handleClick
 ) => (
   <div className={styles.preViewCard} onClick={handleClick}>
@@ -15,14 +15,16 @@ const PreViewCard = (
         <img src={imageURL} alt="imageURL" className={styles.image} />
       ) : (
         <div className={styles.noImage}>
-          <span>{title}</span>
+          <span className={styles.noImage__title}>{title}</span>
         </div>
       )}
     </section>
-    {imageURL && (
+    {imageURL ? (
       <footer className={styles.footer}>
         <span>{title}</span>
       </footer>
+    ) : (
+      <footer className={styles.footer}></footer>
     )}
   </div>
 );

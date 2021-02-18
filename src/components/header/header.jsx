@@ -4,7 +4,7 @@ import styles from "./header.module.css";
 import LoginModal from "../portal_modal/portal_login/loginModal";
 import ModalPotal from "../portal_modal/modalPotal";
 
-const Header = memo(({ authService, uid }) => {
+const Header = memo(({ authService, uid, handleVisible }) => {
   const history = useHistory();
   const [modal, setModal] = useState(false);
   const logout = () => {
@@ -18,14 +18,6 @@ const Header = memo(({ authService, uid }) => {
       },
     });
   };
-  // const handleMainPage = () => {
-  //   history.push({
-  //     pathname: "/",
-  //     state: {
-  //       uid: uid,
-  //     },
-  //   });
-  // };
   const handleClose = () => {
     setModal(false);
   };
@@ -40,11 +32,14 @@ const Header = memo(({ authService, uid }) => {
       </div>
       {uid ? (
         <nav className={styles.navMenus}>
-          <span className={styles.navMenu} onClick={handleMyDiaryPage}>
+          {/* <span className={styles.navMenu} onClick={handleMyDiaryPage}>
             My Story
+          </span> */}
+          <span className={styles.navMenu} onClick={handleVisible}>
+            일기 작성
           </span>
-          <span className={styles.navMenu}>My Familly</span>
-          <span className={styles.navMenu}>Shared Diary</span>
+          {/* <span className={styles.navMenu}>My Familly</span> */}
+          {/* <span className={styles.navMenu}>Shared Diary</span> */}
           <span className={styles.navMenu} onClick={logout}>
             로그아웃
           </span>

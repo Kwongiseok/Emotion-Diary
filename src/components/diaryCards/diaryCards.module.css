@@ -1,12 +1,10 @@
 .DiaryCards {
+  margin: auto;
+  margin-top: 1rem;
   display: flex;
   flex-direction: column;
-  flex-basis: 35%;
-  width: 100%;
+  width: 80%;
   height: 100%;
-  margin-right: 5%;
-  background-color: blanchedalmond;
-  text-align: center;
+  background-color: white;
   align-items: center;
-  overflow-y: auto;
 }

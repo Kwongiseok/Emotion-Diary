@@ -3,8 +3,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 50%;
-  flex-basis: 25%;
+  width: 100%;
+  flex-basis: 100%;
 }
 .CalendarHeader {
   user-select: none;
@@ -16,7 +16,6 @@
   display: inline-flex;
   border: none;
   background-color: transparent;
-  border-radius: 4px;
   cursor: pointer;
 }
 .button:focus {
@@ -34,7 +33,7 @@
 }
 .dayName {
   width: 14%;
-  padding: 1em;
+  padding: 0.7rem;
   font-size: 0.8rem;
 }
 
@@ -54,7 +53,7 @@
   display: flex;
   flex-direction: column;
   width: 14%;
-  height: 2.5rem;
+  height: 3rem;
   text-align: center;
   align-items: center;
   cursor: pointer;

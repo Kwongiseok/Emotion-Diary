@@ -7,6 +7,7 @@ import ModalPotal from "../portal_modal/modalPotal";
 import styles from "./myDiaryPage.module.css";
 import { useHistory } from "react-router-dom";
 import { getDate, getYear, getMonth } from "date-fns";
+import { Drawer } from "antd";
 
 const MyDiaryPage = ({ FileInput, authService, dbService }) => {
   const history = useHistory();
@@ -17,6 +18,7 @@ const MyDiaryPage = ({ FileInput, authService, dbService }) => {
   const [date, setDate] = useState(new Date());
   const [clickDate, setClickDate] = useState(""); // 달력에서 클릭한 날짜를 받아옴
   const [dayDiary, setDayDiary] = useState("");
+  const [visible, setVisible] = useState(false);
 
   const handleClaendarDate = useCallback(
     (newDate) => {
@@ -40,6 +42,9 @@ const MyDiaryPage = ({ FileInput, authService, dbService }) => {
   const handleCloseModal = useCallback(() => {
     setEditModal(false);
   }, [setEditModal]);
+  const handleVisible = useCallback(() => {
+    setVisible(!visible);
+  });
 
   const searchDiaryList = useCallback(
     (uid, year, month) => {
@@ -69,9 +74,7 @@ const MyDiaryPage = ({ FileInput, authService, dbService }) => {
     });
     dbService.writeDiaryData(uid, diary);
   };
-  const onFileChange = (diary,url) => {
-    
-  }
+
   useEffect(() => {
     if (!uid) return;
     searchClickDateDiary(
@@ -98,31 +101,45 @@ const MyDiaryPage = ({ FileInput, authService, dbService }) => {
   }, [uid, authService, history, historyState]);
 
   return (
-    <div className={styles.MyDiaryPage}>
-      <Header authService={authService} uid={uid} />
-      <section className={styles.body}>
-        <DiaryCards diaryList={diaryList} />
-        <Calendar
-          date={date}
-          diaryList={diaryList}
-          resetDiaryList={resetDiaryList}
-          onHandleModal={handleOpenModal}
-          onHandleClickDate={handleClickDate}
-          setDate={handleClaendarDate}
-        />
-      </section>
-      {diaryEditModal && (
-        <ModalPotal>
-          <DiaryEditForm
-            FileInput={FileInput}
-            date={clickDate}
-            onClose={handleCloseModal}
-            dayDiary={dayDiary} // 임시용
-            createOrUpdateDiary={createOrUpdateDiary}
-          />
-        </ModalPotal>
-      )}
-    </div>
+    <>
+      <Header
+        authService={authService}
+        uid={uid}
+        handleVisible={handleVisible}
+      />
+      <div className={styles.MyDiaryPage}>
+        <section className={styles.body}>
+          <DiaryCards diaryList={diaryList} />
+          <Drawer
+            placement="right"
+            visible={visible}
+            onClose={handleVisible}
+            width="34vw"
+            zIndex={1}
+          >
+            <Calendar
+              date={date}
+              diaryList={diaryList}
+              resetDiaryList={resetDiaryList}
+              onHandleModal={handleOpenModal}
+              onHandleClickDate={handleClickDate}
+              setDate={handleClaendarDate}
+            />
+          </Drawer>
+        </section>
+        {diaryEditModal && (
+          <ModalPotal>
+            <DiaryEditForm
+              FileInput={FileInput}
+              date={clickDate}
+              onClose={handleCloseModal}
+              dayDiary={dayDiary} // 임시용
+              createOrUpdateDiary={createOrUpdateDiary}
+            />
+          </ModalPotal>
+        )}
+      </div>
+    </>
   );
 };
 

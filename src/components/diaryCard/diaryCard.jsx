@@ -1,30 +1,21 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React, { useState } from "react";
-import FlippedCard from "../flipCard/flipCard";
+import PreViewCard from "../preView/preViewCard";
 import styles from "./diaryCard.module.css";
-import ReactCardFlip from "react-card-flip";
-import PreViewCard from "../flipCard/preViewCard";
 
 const DiaryCard = ({ cardInfo }) => {
-  const [isFlipped, setisFlipped] = useState(true);
+  const [selected, setSelected] = useState(true);
   const handleClick = () => {
-    setisFlipped(!isFlipped);
+    setSelected(!selected);
   };
   return (
-    <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal">
-      <div className={styles.DiaryCard}>
-        <FlippedCard
-          cardInfo={cardInfo}
-          handleClick={handleClick}
-        ></FlippedCard>
+    <div className={styles.DiaryCard}>
+      <PreViewCard cardInfo={cardInfo} />
+      <div className={styles.diaryText}>
+        <h3 className={styles.diaryTitle}>{cardInfo.title}</h3>
+        <h4>{cardInfo.diaryText}</h4>
       </div>
-      <div className={styles.DiaryCard}>
-        <PreViewCard
-          cardInfo={cardInfo}
-          handleClick={handleClick}
-        ></PreViewCard>
-      </div>
-    </ReactCardFlip>
+    </div>
   );
 };
 

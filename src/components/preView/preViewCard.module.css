@@ -7,7 +7,6 @@
   text-align: center;
   background-color: transparent;
 }
-
 .header {
 }
 .header__title {
@@ -18,20 +17,33 @@
   border-radius: 10%;
   height: 90%;
   width: 100%;
-  object-fit: cover;
 }
 
 .image {
   width: 100%;
   height: 100%;
-  border-radius: 10%;
+  object-fit: cover;
 }
 
 .noImage {
   display: flex;
-  text-align: center;
+  position: relative;
+  justify-content: center;
   align-items: center;
   width: 100%;
   height: 100%;
-  border-radius: 10%;
+  background-color: whitesmoke;
+}
+.noImage__title {
+  position: absolute;
+  font-size: x-large;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.footer {
+  font-size: medium;
+  height: 10%;
 }
