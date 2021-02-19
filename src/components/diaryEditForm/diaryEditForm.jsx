@@ -10,6 +10,7 @@ import {
   NORMAL,
   sentimentAnalysis,
 } from "../../serviceApp/textEmotion";
+import { Tooltip } from "antd";
 const DiaryEditForm = ({
   FileInput,
   date,
@@ -98,6 +99,7 @@ const DiaryEditForm = ({
 
   const handleEmotion = async () => {
     const feel = await sentimentAnalysis(diaryText);
+    console.log(feel);
     updateEmotion(feel);
   };
 
@@ -136,16 +138,22 @@ const DiaryEditForm = ({
           <FileInput onFileChange={onFileChange} imageURL={imageURL} />
         </div>
         <div className={styles.icons}>
-          <select ref={weatherRef} className={styles.weather}>
-            <option value="☀️">☀️</option>
-            <option value="🌥">🌥</option>
-            <option value="🌨">🌨</option>
-            <option value="☔">☔</option>
-          </select>
+          <Tooltip title={"오늘의 날씨를 기록해요!"}>
+            <select ref={weatherRef} className={styles.weather}>
+              <option value="☀️">☀️</option>
+              <option value="🌥">🌥</option>
+              <option value="🌨">🌨</option>
+              <option value="☔">☔</option>
+            </select>
+          </Tooltip>
           {emotion ? (
-            <button onClick={handleEmotion}>{emotion}</button>
+            <button className={styles.emotion} onClick={handleEmotion}>
+              <Tooltip title={"오늘의 감정을 알아봐요!"}>{emotion}</Tooltip>
+            </button>
           ) : (
-            <button onClick={handleEmotion}>감정 분석</button>
+            <button className={styles.emotion} onClick={handleEmotion}>
+              <Tooltip title={"오늘의 감정을 알아봐요!"}>{"🧐"}</Tooltip>
+            </button>
           )}
         </div>
         <form ref={formRef} className={styles.formBox} onSubmit={handleSubmit}>

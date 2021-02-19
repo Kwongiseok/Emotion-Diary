@@ -29,14 +29,30 @@
 .icons {
   padding: 0.5rem;
 }
+.emotion {
+  background-color: transparent;
+  height: 100%;
+  border: none;
+  font-size: 1.5em;
+}
+.emotion:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+}
+.emotion:focus {
+  outline: none;
+}
 .weather {
   border: 0;
   width: 2rem;
-  height: 1.5em;
+  height: 100%;
   font-size: 1.5em;
   -webkit-appearance: none;
   -moz-appearance: none; /* Firefox */
   appearance: none;
+}
+.weather:hover {
+  cursor: pointer;
 }
 .formBox {
   height: 45%;

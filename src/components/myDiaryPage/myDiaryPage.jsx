@@ -44,7 +44,7 @@ const MyDiaryPage = ({ FileInput, authService, dbService }) => {
   }, [setEditModal]);
   const handleVisible = useCallback(() => {
     setVisible(!visible);
-  });
+  }, [setVisible, visible]);
 
   const searchDiaryList = useCallback(
     (uid, year, month) => {
@@ -133,7 +133,7 @@ const MyDiaryPage = ({ FileInput, authService, dbService }) => {
               FileInput={FileInput}
               date={clickDate}
               onClose={handleCloseModal}
-              dayDiary={dayDiary} // 임시용
+              dayDiary={dayDiary}
               createOrUpdateDiary={createOrUpdateDiary}
             />
           </ModalPotal>

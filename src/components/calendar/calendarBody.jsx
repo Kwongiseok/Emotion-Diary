@@ -52,18 +52,10 @@ const CalendarBody = ({
                   increasingDays
                 ); // startOfWeek - 해당월 첫 주, + 현재 추가해야할 Days 계산
                 let formDate = format(newDay, "d"); // 일(Day) 만 뽑아낸다.
-                let newYear = getYear(newDay);
                 let newMonth = getMonth(newDay);
-
                 let showingDay = headerMonth === newMonth ? `${formDate}` : "";
-
-                let dayDiary =
-                  diaryList &&
-                  Object.keys(diaryList).find(
-                    (key) => diaryList[key].day === showingDay
-                  );
-                // 이미지 삽입해야함!
-
+                let existDiary =
+                  diaryList && Object.keys(diaryList).includes(showingDay);
                 let todaySelector =
                   format(newDay, "yyyy-MM-d") ===
                   format(
@@ -76,6 +68,8 @@ const CalendarBody = ({
                   <ShowingDayBox
                     key={dayIndex}
                     showingDay={showingDay}
+                    existDiary={existDiary}
+                    diaryList={diaryList}
                     onHandleBox={handleShowingBox}
                   />
                 ) : (

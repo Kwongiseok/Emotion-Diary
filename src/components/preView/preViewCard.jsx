@@ -1,10 +1,10 @@
 import React from "react";
 import styles from "./preViewCard.module.css";
 const PreViewCard = (
-  { cardInfo: { weather, day, id, emotion, title, imageURL, diaryText } },
+  { cardInfo: { weather, day, id, emotion, title, imageURL } },
   handleClick
 ) => (
-  <div className={styles.preViewCard} onClick={handleClick}>
+  <div className={styles.preViewCard}>
     <header className={styles.header}>
       <h3
         className={styles.header__title}
