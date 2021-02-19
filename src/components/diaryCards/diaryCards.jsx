@@ -10,7 +10,7 @@ const DiaryCards = ({ diaryList }) => {
       <Row gutter={[6, 6]} wrap={true}>
         {diaryList &&
           Object.keys(diaryList).map((key) => (
-            <Col xs={24} md={12} xl={8} align="middle">
+            <Col xs={24} md={12} xl={8} align="middle" key={key}>
               <DiaryCard cardInfo={diaryList[key]} key={key} />
             </Col>
           ))}

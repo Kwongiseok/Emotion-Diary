@@ -4,6 +4,12 @@
 import React, { useEffect, useRef } from "react";
 import styles from "./diaryEditForm.module.css";
 import { getDate, getYear, getMonth, getDay } from "date-fns";
+import {
+  HAPPY,
+  NEGATIVE,
+  NORMAL,
+  sentimentAnalysis,
+} from "../../serviceApp/textEmotion";
 const DiaryEditForm = ({
   FileInput,
   date,
@@ -15,8 +21,7 @@ const DiaryEditForm = ({
   const editMonth = getMonth(date);
   const editDate = getDate(date);
   const editDay = getDay(date);
-  const { title, imageURL, diaryText } = dayDiary ? dayDiary : "";
-
+  const { title, imageURL, diaryText, emotion } = dayDiary ? dayDiary : "";
   const modalRef = useRef();
   const titleRef = useRef();
   const weatherRef = useRef();
@@ -77,7 +82,6 @@ const DiaryEditForm = ({
       }
     }
   };
-
   const onFileChange = (file) => {
     dayDiary
       ? createOrUpdateDiary({
@@ -90,6 +94,36 @@ const DiaryEditForm = ({
           ...makeNewDiary(),
           imageURL: file.url,
         });
+  };
+
+  const handleEmotion = async () => {
+    const feel = await sentimentAnalysis(diaryText);
+    updateEmotion(feel);
+  };
+
+  const updateEmotion = (feel) => {
+    switch (feel) {
+      case HAPPY:
+        createOrUpdateDiary({
+          ...dayDiary,
+          emotion: "😊",
+        });
+        break;
+      case NORMAL:
+        createOrUpdateDiary({
+          ...dayDiary,
+          emotion: "😮",
+        });
+        break;
+      case NEGATIVE:
+        createOrUpdateDiary({
+          ...dayDiary,
+          emotion: "😡",
+        });
+        break;
+      default:
+        throw new Error(`Unhandled Emotion`);
+    }
   };
 
   return (
@@ -108,6 +142,11 @@ const DiaryEditForm = ({
             <option value="🌨">🌨</option>
             <option value="☔">☔</option>
           </select>
+          {emotion ? (
+            <button onClick={handleEmotion}>{emotion}</button>
+          ) : (
+            <button onClick={handleEmotion}>감정 분석</button>
+          )}
         </div>
         <form ref={formRef} className={styles.formBox} onSubmit={handleSubmit}>
           <input
@@ -121,9 +160,10 @@ const DiaryEditForm = ({
             onChange={onChange}
           />
           <textarea
+            type="text"
             ref={diaryTextRef}
             className={styles.textArea}
-            placeholder={true ? "오늘 하루 어땠나요?" : "오늘 하루 어땠나요?"}
+            placeholder={"오늘 하루 어땠나요?"}
             name="diaryText"
             value={diaryText || ""}
             onChange={onChange}
