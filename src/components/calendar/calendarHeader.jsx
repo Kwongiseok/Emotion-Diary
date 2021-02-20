@@ -30,7 +30,6 @@ const CalendarHeader = memo(({ onSetDate, date, resetDiaryList }) => {
     const newDate = addMonths(date, 1);
     const nextYear = getYear(newDate);
     const nextMonth = getMonth(newDate);
-    console.log(nextYear);
     resetDiaryList();
     onSetDate(new Date(nextYear, nextMonth));
     // DiaryList 함수 호출 작성해야함

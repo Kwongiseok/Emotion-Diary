@@ -49,6 +49,17 @@
   width: 100%;
 }
 
+.todayBox {
+  display: flex;
+  flex-direction: column;
+  width: 14%;
+  height: 3rem;
+  background-color: wheat;
+  opacity: 0.8;
+  text-align: center;
+  align-items: center;
+  cursor: pointer;
+}
 .showingDayBox {
   display: flex;
   flex-direction: column;
@@ -66,6 +77,7 @@
   text-align: center;
   align-items: center;
 }
+.todayBox:hover,
 .showingDayBox:hover {
   background-color: #00000020;
 }

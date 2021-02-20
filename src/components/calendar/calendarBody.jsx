@@ -24,7 +24,7 @@ const CalendarBody = ({
   const weeksCountInMonth = getWeeksInMonth(date);
   const dayRange = Array(7).fill(1);
   const weekRange = Array(weeksCountInMonth).fill(1);
-
+  const todayDate = new Date();
   const handleShowingBox = (day) => {
     // 클릭했을 때 새로운 edit창을 띄움
     onHandleClickDate(new Date(headerYear, headerMonth, day));
@@ -57,13 +57,9 @@ const CalendarBody = ({
                 let existDiary =
                   diaryList && Object.keys(diaryList).includes(showingDay);
                 let todaySelector =
-                  format(newDay, "yyyy-MM-d") ===
-                  format(
-                    new Date(headerYear, headerMonth, headerDate),
-                    "yyyy-MM-d"
-                  )
-                    ? "sameDay"
-                    : "";
+                  format(todayDate, "yyyy-MM-d") ===
+                  format(newDay, "yyyy-MM-d"); //
+
                 return showingDay ? (
                   <ShowingDayBox
                     key={dayIndex}
@@ -71,6 +67,7 @@ const CalendarBody = ({
                     existDiary={existDiary}
                     diaryList={diaryList}
                     onHandleBox={handleShowingBox}
+                    todaySelector={todaySelector}
                   />
                 ) : (
                   <ShowingEmptyBox key={dayIndex} />

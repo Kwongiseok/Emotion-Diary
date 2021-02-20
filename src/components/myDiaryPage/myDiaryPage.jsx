@@ -101,7 +101,7 @@ const MyDiaryPage = ({ FileInput, authService, dbService }) => {
   }, [uid, authService, history, historyState]);
 
   return (
-    <>
+    <React.Fragment>
       <Header
         authService={authService}
         uid={uid}
@@ -139,7 +139,7 @@ const MyDiaryPage = ({ FileInput, authService, dbService }) => {
           </ModalPotal>
         )}
       </div>
-    </>
+    </React.Fragment>
   );
 };
 
