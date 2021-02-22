@@ -21,12 +21,14 @@
   border-radius: 5%;
 }
 .loginForm {
+  padding-top: 2em;
   display: flex;
   align-items: center;
   flex-direction: column;
+  margin-bottom: 2em;
 }
 .inputBar {
-  margin-bottom: 0.5em;
+  margin-bottom: 1em;
   padding: 0.5em;
   width: 80%;
   border-radius: 10px;
@@ -36,7 +38,18 @@
 .inputBar:focus {
   outline: none;
 }
+.loginBtn {
+  display: inline-block;
+  background: white;
+  color: #444;
+  width: 190px;
+  border-radius: 5px;
+  border: thin solid #888;
+  box-shadow: 1px 1px 1px grey;
+  white-space: nowrap;
+}
 .lostPassword {
+  margin-top: 2em;
   font-size: 0.7rem;
   color: #ff0080;
 }
@@ -52,4 +65,29 @@
 .loginOrRegister,
 .lostPassword:hover {
   cursor: pointer;
+}
+
+/*  Register Message  */
+.authManage {
+  margin-top: 2em;
+}
+.close {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 2em;
+}
+.closeBtn {
+  font-size: 1.2em;
+  background-color: transparent;
+  border: none;
+}
+.closeBtn:hover {
+  cursor: pointer;
+  outline: none;
+}
+@media (max-width: 812px) {
+  .login {
+    width: 90%;
+  }
 }

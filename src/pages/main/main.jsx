@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import LoginModal from "../portal_modal/portal_login/loginModal";
-import ModalPotal from "../portal_modal/modalPotal";
+import LoginModal from "../../components/portal_modal/portal_login/loginModal";
+import ModalPotal from "../../components/portal_modal/modalPotal";
 import styles from "./main.module.css";
 import { useHistory } from "react-router-dom";
-import Header from "../header/header";
+import Header from "../../components/header/header";
 
 const Main = ({ authService }) => {
   const history = useHistory();

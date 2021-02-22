@@ -1,9 +1,9 @@
 import React from "react";
 import styles from "./portal-header.module.css";
 const PortalHeader = ({ loginOrSignUp }) => (
-  <header>
+  <header className={styles.header}>
     <div className={styles.headerImg}>
-      <img src="/favicon.ico" />
+      <img className={styles.logo} src="/logo.png" />
     </div>
     <h3 className={styles.title}>{loginOrSignUp}</h3>
   </header>

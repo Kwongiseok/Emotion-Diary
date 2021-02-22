@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useRef, useState } from "react";
 import PortalFooter from "../portal_footer/portalFooter";
 import PortalHeader from "../portal_header/portal-header";
@@ -25,7 +26,7 @@ const LoginModal = ({ onClose, authService, loginSaveUid }) => {
     return () => {
       window.removeEventListener("click", handleClose);
     };
-  }, []);
+  }, [handleClose]);
   return (
     <div className={styles.loginModal}>
       <div ref={modalRef} className={styles.login}>
@@ -50,7 +51,11 @@ const LoginModal = ({ onClose, authService, loginSaveUid }) => {
           onClose={onClose}
           loginSaveUid={loginSaveUid}
         />
-        <button onClick={onClose}>close</button>
+        <div className={styles.close}>
+          <button className={styles.closeBtn} onClick={onClose}>
+            X close
+          </button>
+        </div>
       </div>
     </div>
   );

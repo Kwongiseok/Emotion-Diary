@@ -4,14 +4,19 @@ import styles from "./diaryCards.module.css";
 import "antd/dist/antd.css";
 import { Row, Col } from "antd";
 
-const DiaryCards = ({ diaryList }) => {
+const DiaryCards = ({ diaryList, handleClickDate, handleOpenModal }) => {
   return (
     <section className={styles.DiaryCards}>
-      <Row gutter={[6, 6]} wrap={true}>
+      <Row gutter={[16, 16]} wrap={true}>
         {diaryList &&
           Object.keys(diaryList).map((key) => (
-            <Col xs={24} md={12} xl={8} align="middle" key={key}>
-              <DiaryCard cardInfo={diaryList[key]} key={key} />
+            <Col lg={8} md={12} xs={24} align="middle" key={key}>
+              <DiaryCard
+                cardInfo={diaryList[key]}
+                handleClickDate={handleClickDate}
+                handleOpenModal={handleOpenModal}
+                key={key}
+              />
             </Col>
           ))}
       </Row>

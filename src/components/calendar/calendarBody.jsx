@@ -20,7 +20,6 @@ const CalendarBody = ({
   const weekDays = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
   const headerYear = getYear(date);
   const headerMonth = getMonth(date);
-  const headerDate = getDate(date);
   const weeksCountInMonth = getWeeksInMonth(date);
   const dayRange = Array(7).fill(1);
   const weekRange = Array(weeksCountInMonth).fill(1);
@@ -58,7 +57,7 @@ const CalendarBody = ({
                   diaryList && Object.keys(diaryList).includes(showingDay);
                 let todaySelector =
                   format(todayDate, "yyyy-MM-d") ===
-                  format(newDay, "yyyy-MM-d"); //
+                  format(newDay, "yyyy-MM-d");
 
                 return showingDay ? (
                   <ShowingDayBox

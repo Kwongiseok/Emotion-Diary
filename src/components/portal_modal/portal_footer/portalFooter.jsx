@@ -1,7 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-
-const PortalFooter = ({ authService, onClose}) => {
+import styles from "./portalFooter.module.css";
+const PortalFooter = ({ authService, onClose }) => {
   const history = useHistory();
   const loginSuccess = ({ user }) => {
     history.push({
@@ -16,7 +16,9 @@ const PortalFooter = ({ authService, onClose}) => {
   };
   return (
     <div>
-      <button onClick={handleGoogleLogin}>Google</button>
+      <button className={styles.googleBtn} onClick={handleGoogleLogin}>
+        Login with Google
+      </button>
     </div>
   );
 };

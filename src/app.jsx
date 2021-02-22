@@ -1,7 +1,7 @@
 import "./app.module.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Main from "./components/main/main";
-import MyDiaryPage from "./components/myDiaryPage/myDiaryPage";
+import Main from "./pages/main/main";
+import MyDiaryPage from "./pages/myDiaryPage/myDiaryPage";
 
 function App({ FileInput, authService, dbService }) {
   return (

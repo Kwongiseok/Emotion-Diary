@@ -7,22 +7,19 @@
   text-align: center;
   background-color: transparent;
 }
-.header {
-}
 .header__title {
   margin: 0;
 }
 
 .body {
-  border-radius: 10%;
-  height: 90%;
+  height: 100%;
   width: 100%;
 }
 
 .image {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  /* object-fit: cover; */
 }
 
 .noImage {
@@ -41,9 +38,4 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-}
-
-.footer {
-  font-size: medium;
-  height: 10%;
 }

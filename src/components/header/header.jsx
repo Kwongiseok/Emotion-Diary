@@ -10,14 +10,6 @@ const Header = memo(({ authService, uid, handleVisible }) => {
   const logout = () => {
     authService.logOut().then(history.push("/"));
   };
-  const handleMyDiaryPage = () => {
-    history.push({
-      pathname: "/myDiaryPage",
-      state: {
-        uid: uid,
-      },
-    });
-  };
   const handleClose = () => {
     setModal(false);
   };
@@ -32,14 +24,9 @@ const Header = memo(({ authService, uid, handleVisible }) => {
       </div>
       {uid ? (
         <nav className={styles.navMenus}>
-          {/* <span className={styles.navMenu} onClick={handleMyDiaryPage}>
-            My Story
-          </span> */}
           <span className={styles.navMenu} onClick={handleVisible}>
             일기 작성
           </span>
-          {/* <span className={styles.navMenu}>My Familly</span> */}
-          {/* <span className={styles.navMenu}>Shared Diary</span> */}
           <span className={styles.navMenu} onClick={logout}>
             로그아웃
           </span>

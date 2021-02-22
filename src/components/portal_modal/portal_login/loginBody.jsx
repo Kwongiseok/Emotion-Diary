@@ -1,3 +1,4 @@
+import { Button } from "antd";
 import React, { useRef } from "react";
 import styles from "./loginModal.module.css";
 const LoginBody = ({ authService, onClickAuth, onClose }) => {
@@ -33,7 +34,7 @@ const LoginBody = ({ authService, onClickAuth, onClose }) => {
         className={styles.inputBar}
         placeholder="비밀번호"
       />
-      <button>로그인</button>
+      <button className={styles.loginBtn}>로그인</button>
       <div className={styles.authManage}>
         <h2 className={styles.lostPassword}>혹시 비밀번호를 잊어버리셨나요?</h2>
         <label className={styles.noAccount}>계정이 없으신가요?</label>

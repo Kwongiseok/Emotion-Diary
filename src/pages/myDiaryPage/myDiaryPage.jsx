@@ -1,13 +1,14 @@
 import React, { useCallback, useEffect, useState } from "react";
-import Calendar from "../calendar/calendar";
-import DiaryCards from "../diaryCards/diaryCards";
-import DiaryEditForm from "../diaryEditForm/diaryEditForm";
-import Header from "../header/header";
-import ModalPotal from "../portal_modal/modalPotal";
+import Calendar from "../../components/calendar/calendar";
+import DiaryCards from "../../components/diaryCards/diaryCards";
+import DiaryEditForm from "../../components/diaryEditForm/diaryEditForm";
+import Header from "../../components/header/header";
+import ModalPotal from "../../components/portal_modal/modalPotal";
 import styles from "./myDiaryPage.module.css";
 import { useHistory } from "react-router-dom";
 import { getDate, getYear, getMonth } from "date-fns";
 import { Drawer } from "antd";
+import useDate from "../../hooks/useDate";
 
 const MyDiaryPage = ({ FileInput, authService, dbService }) => {
   const history = useHistory();
@@ -15,23 +16,10 @@ const MyDiaryPage = ({ FileInput, authService, dbService }) => {
   const [uid, setUid] = useState(historyState && historyState.uid);
   const [diaryList, setDiaryList] = useState({});
   const [diaryEditModal, setEditModal] = useState(false); // 일기장 편집창 Modal로 구현
-  const [date, setDate] = useState(new Date());
-  const [clickDate, setClickDate] = useState(""); // 달력에서 클릭한 날짜를 받아옴
+  const [date, handleClaendarDate] = useDate(new Date());
+  const [clickDate, handleClickDate] = useDate(""); // 달력에서 클릭한 날짜를 받아옴
   const [dayDiary, setDayDiary] = useState("");
   const [visible, setVisible] = useState(false);
-
-  const handleClaendarDate = useCallback(
-    (newDate) => {
-      setDate(newDate);
-    },
-    [setDate]
-  );
-  const handleClickDate = useCallback(
-    (date) => {
-      setClickDate(date);
-    },
-    [setClickDate]
-  );
 
   const resetDiaryList = useCallback(() => {
     setDiaryList([]);
@@ -109,7 +97,11 @@ const MyDiaryPage = ({ FileInput, authService, dbService }) => {
       />
       <div className={styles.MyDiaryPage}>
         <section className={styles.body}>
-          <DiaryCards diaryList={diaryList} />
+          <DiaryCards
+            diaryList={diaryList}
+            handleClickDate={handleClickDate}
+            handleOpenModal={handleOpenModal}
+          />
           <Drawer
             placement="right"
             visible={visible}

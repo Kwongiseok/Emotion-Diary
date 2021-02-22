@@ -1,6 +1,6 @@
+import { Button } from "antd";
 import React, { useRef } from "react";
 import { useHistory } from "react-router-dom";
-import AuthService from "../../../serviceApp/auth_Service";
 import styles from "./loginModal.module.css";
 const RegisterBody = ({ authService, onClickAuth, onClose }) => {
   const formRef = useRef();
@@ -14,6 +14,7 @@ const RegisterBody = ({ authService, onClickAuth, onClose }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    console.log("클릭");
     const nickName = nickNameRef.current.value || "";
     const email = emailRef.current.value || "";
     const password = passwordRef.current.value || "";
@@ -50,7 +51,7 @@ const RegisterBody = ({ authService, onClickAuth, onClose }) => {
         placeholder="비밀번호"
       />
 
-      <button>회원가입</button>
+      <button className={styles.loginBtn}>회원가입</button>
       <div className={styles.authManage}>
         <label className={styles.noAccount}>이미 가입하셨나요?</label>
         <span className={styles.loginOrRegister} onClick={onClickAuth}>

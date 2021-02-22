@@ -1,8 +1,17 @@
+.header {
+  height: 20%;
+}
 .headerImg {
+  height: 80%;
+  width: 100%;
   padding: 0.5em;
 }
-
+.logo {
+  width: 15%;
+  height: 100%;
+}
 .title {
   margin: 0;
   padding: 0.5em;
+  margin-bottom: 0.5em;
 }
