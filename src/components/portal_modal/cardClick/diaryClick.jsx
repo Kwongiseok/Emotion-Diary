@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { Dropdown, Menu } from "antd";
-import { SmallDashOutlined } from "@ant-design/icons";
+import { DownOutlined } from "@ant-design/icons";
 import React, { useCallback } from "react";
 import styles from "./diaryClick.module.css";
 
@@ -37,19 +37,20 @@ const DiaryClick = ({
           )}
         </div>
         <section className={styles.contentBox}>
-          <Dropdown.Button
+          <Dropdown
             style={{ float: "right" }}
-            className={styles.dropdownBtn}
             overlay={userMenu}
-            icon={
-              <SmallDashOutlined
-                style={{
-                  fontSize: "1.5em",
-                  backgroundcolor: "transparent",
-                }}
-              />
-            }
-          ></Dropdown.Button>
+            trigger="click"
+          >
+            <a
+              className="ant-dropdown-link"
+              onClick={(e) => e.preventDefault()}
+              style={{ float: "right", marginRight: "5%" }}
+            >
+              More
+              <DownOutlined />
+            </a>
+          </Dropdown>
           <div className={styles.titleBox}>
             <h2 className={styles.day}>{`${cardInfo.year}년 ${
               cardInfo.month + 1

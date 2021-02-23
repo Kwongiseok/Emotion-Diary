@@ -9,9 +9,12 @@ import { useHistory } from "react-router-dom";
 import { getDate, getYear, getMonth } from "date-fns";
 import { Drawer } from "antd";
 import useDate from "../../hooks/useDate";
+import CalendarHeader from "../../components/calendar/calendarHeader";
 
 const MyDiaryPage = ({ FileInput, authService, dbService }) => {
   const history = useHistory();
+  const storageDate = sessionStorage.getItem("pageDate");
+  // const pageDate = storageDate ? storageDate : new Date();
   const historyState = history.location.state;
   const [uid, setUid] = useState(historyState && historyState.uid);
   const [diaryList, setDiaryList] = useState({});
@@ -20,7 +23,6 @@ const MyDiaryPage = ({ FileInput, authService, dbService }) => {
   const [clickDate, handleClickDate] = useDate(""); // 달력에서 클릭한 날짜를 받아옴
   const [dayDiary, setDayDiary] = useState("");
   const [visible, setVisible] = useState(false);
-
   const resetDiaryList = useCallback(() => {
     setDiaryList([]);
   }, [setDiaryList]);
@@ -96,6 +98,13 @@ const MyDiaryPage = ({ FileInput, authService, dbService }) => {
         handleVisible={handleVisible}
       />
       <div className={styles.MyDiaryPage}>
+        <div className={styles.pageCalendar}>
+          <CalendarHeader
+            onSetDate={handleClaendarDate}
+            date={date}
+            resetDiaryList={resetDiaryList}
+          />
+        </div>
         <section className={styles.body}>
           <DiaryCards
             diaryList={diaryList}
@@ -106,7 +115,7 @@ const MyDiaryPage = ({ FileInput, authService, dbService }) => {
             placement="right"
             visible={visible}
             onClose={handleVisible}
-            width="34vw"
+            width={window.innerWidth > 768 ? "34vw" : "90vw"}
             zIndex={1}
           >
             <Calendar

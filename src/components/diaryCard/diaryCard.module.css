@@ -46,3 +46,8 @@
   transform: translateX(-20%);
   background-color: #bdbdbd;
 }
+@media screen and (max-width: 768px) {
+  .DiaryCard:hover .diaryText {
+    opacity: 0;
+  }
+}

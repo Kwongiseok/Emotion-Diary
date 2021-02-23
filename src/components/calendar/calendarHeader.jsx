@@ -24,6 +24,7 @@ const CalendarHeader = memo(({ onSetDate, date, resetDiaryList }) => {
     const prevMonth = getMonth(newDate);
     resetDiaryList();
     onSetDate(new Date(prevYear, prevMonth));
+    sessionStorage.setItem("pageDate", new Date(prevYear, prevMonth));
     // DiaryList 함수 호출 작성해야함
   };
   const addMonth = () => {
@@ -32,6 +33,7 @@ const CalendarHeader = memo(({ onSetDate, date, resetDiaryList }) => {
     const nextMonth = getMonth(newDate);
     resetDiaryList();
     onSetDate(new Date(nextYear, nextMonth));
+    sessionStorage.setItem("pageDate", new Date(nextYear, nextMonth));
     // DiaryList 함수 호출 작성해야함
   };
   return (
