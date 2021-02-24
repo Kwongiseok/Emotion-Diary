@@ -5,7 +5,12 @@ import ModalPotal from "../portal_modal/modalPotal";
 import PreViewCard from "../preView/preViewCard";
 import styles from "./diaryCard.module.css";
 
-const DiaryCard = ({ cardInfo, handleClickDate, handleOpenModal }) => {
+const DiaryCard = ({
+  deleteDiaryFromList,
+  cardInfo,
+  handleClickDate,
+  handleOpenModal,
+}) => {
   const [selected, setSelected] = useState(false);
   const handleClick = () => {
     setSelected(!selected);
@@ -23,6 +28,7 @@ const DiaryCard = ({ cardInfo, handleClickDate, handleOpenModal }) => {
       {selected && (
         <ModalPotal>
           <DiaryClick
+            deleteDiaryFromList={deleteDiaryFromList}
             cardInfo={cardInfo}
             onClose={handleClick}
             handleClickDate={handleClickDate}

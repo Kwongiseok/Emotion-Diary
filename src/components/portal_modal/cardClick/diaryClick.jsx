@@ -1,27 +1,36 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { Dropdown, Menu } from "antd";
 import { DownOutlined } from "@ant-design/icons";
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect } from "react";
 import styles from "./diaryClick.module.css";
 
 const DiaryClick = ({
+  deleteDiaryFromList,
   onClose,
   cardInfo,
   handleClickDate,
   handleOpenModal,
 }) => {
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => (document.body.style.overflow = "unset");
+  });
   const handleClick = useCallback(() => {
     const clickDate = new Date(cardInfo.year, cardInfo.month, cardInfo.id);
     handleClickDate(clickDate);
     onClose();
     handleOpenModal();
   }, []);
+  const handleDelete = useCallback(() => {
+    onClose();
+    deleteDiaryFromList(cardInfo.year, cardInfo.month, cardInfo.id);
+  });
   const userMenu = (
     <Menu>
       <Menu.Item key="1" onClick={handleClick}>
         수정하기
       </Menu.Item>
-      <Menu.Item key="2" style={{ color: "red" }}>
+      <Menu.Item key="2" style={{ color: "red" }} onClick={handleDelete}>
         삭제하기
       </Menu.Item>
     </Menu>

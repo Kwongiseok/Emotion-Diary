@@ -33,6 +33,11 @@ class DatabaseService {
       .ref("/users/" + uid + "/diary/" + year + "/" + month + "/" + date)
       .once("value");
   }
+  deleteDiary(uid, year, month, id) {
+    firebaseDatabase
+      .ref("/users" + uid + "/diary" + year + "/" + month + "/" + id)
+      .remove();
+  }
 }
 
 export default DatabaseService;

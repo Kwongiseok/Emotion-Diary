@@ -13,7 +13,7 @@ import CalendarHeader from "../../components/calendar/calendarHeader";
 
 const MyDiaryPage = ({ FileInput, authService, dbService }) => {
   const history = useHistory();
-  const storageDate = sessionStorage.getItem("pageDate");
+  // const storageDate = sessionStorage.getItem("pageDate");
   // const pageDate = storageDate ? storageDate : new Date();
   const historyState = history.location.state;
   const [uid, setUid] = useState(historyState && historyState.uid);
@@ -65,6 +65,15 @@ const MyDiaryPage = ({ FileInput, authService, dbService }) => {
     dbService.writeDiaryData(uid, diary);
   };
 
+  const deleteDiaryFromList = (year, month, id) => {
+    dbService.deleteDiary(uid, year, month, id);
+    setDiaryList((diarys) => {
+      console.log(typeof diarys);
+      const updated = diarys.filter((diary) => diary.id !== id);
+      return updated;
+    });
+  };
+
   useEffect(() => {
     if (!uid) return;
     searchClickDateDiary(
@@ -108,6 +117,7 @@ const MyDiaryPage = ({ FileInput, authService, dbService }) => {
         <section className={styles.body}>
           <DiaryCards
             diaryList={diaryList}
+            deleteDiaryFromList={deleteDiaryFromList}
             handleClickDate={handleClickDate}
             handleOpenModal={handleOpenModal}
           />

@@ -1,7 +1,8 @@
 .clickCardModal {
   position: fixed;
-  z-index: 100;
+  z-index: 1000;
   text-align: center;
+  align-items: center;
   background-color: #00000080;
   top: 0;
   left: 0;
