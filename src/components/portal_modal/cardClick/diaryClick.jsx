@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { Dropdown, Menu } from "antd";
+import { Dropdown, Image, Menu } from "antd";
 import { DownOutlined } from "@ant-design/icons";
 import React, { useCallback, useEffect } from "react";
 import styles from "./diaryClick.module.css";
@@ -40,9 +40,16 @@ const DiaryClick = ({
       <div className={styles.diary}>
         <div className={styles.imgBox}>
           {cardInfo.imageURL ? (
-            <img className={styles.img} src={cardInfo.imageURL} />
+            <Image
+              className={styles.img}
+              width="100%"
+              height="100%"
+              src={cardInfo.imageURL}
+            />
           ) : (
-            <div className={styles.emptyImg}>hi</div>
+            <button className={styles.emptyImg} onClick={handleClick}>
+              이미지 추가하기
+            </button>
           )}
         </div>
         <section className={styles.contentBox}>
@@ -54,9 +61,9 @@ const DiaryClick = ({
             <a
               className="ant-dropdown-link"
               onClick={(e) => e.preventDefault()}
-              style={{ float: "right", marginRight: "5%" }}
+              style={{ float: "right", marginRight: "5%", height: "12px" }}
             >
-              More
+              ...
               <DownOutlined />
             </a>
           </Dropdown>
@@ -66,9 +73,10 @@ const DiaryClick = ({
             }월 ${cardInfo.id}일`}</h2>
             <h3
               className={styles.weather}
-            >{`오늘의 날씨는 ${cardInfo.weather}`}</h3>
-            <h3 className={styles.emotion}>{`기분은 ${cardInfo.emotion}`}</h3>
-            <h1 className={styles.title}>{cardInfo.title}</h1>
+            >{`오늘의 날씨는 ${cardInfo.weather} 기분은 ${cardInfo.emotion}`}</h3>
+            <div className={styles.titleTextBox}>
+              <h1 className={styles.title}>{cardInfo.title}</h1>
+            </div>
           </div>
           <div className={styles.content}>
             <pre className={styles.diaryText}>{`${cardInfo.diaryText}`}</pre>

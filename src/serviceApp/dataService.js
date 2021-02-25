@@ -35,7 +35,7 @@ class DatabaseService {
   }
   deleteDiary(uid, year, month, id) {
     firebaseDatabase
-      .ref("/users" + uid + "/diary" + year + "/" + month + "/" + id)
+      .ref("users/" + uid + "/diary/" + year + "/" + month + "/" + id)
       .remove();
   }
 }

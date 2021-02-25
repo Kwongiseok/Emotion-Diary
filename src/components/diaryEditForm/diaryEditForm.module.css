@@ -10,21 +10,34 @@
   bottom: 0;
 }
 .DiaryEditForm {
+  display: flex;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  height: 90%;
-  width: 30%;
+  height: 80%;
+  width: 70%;
   margin: auto;
   background-color: white;
-  border-radius: 16px;
+  border-radius: 24px;
   text-align: center;
   align-items: center;
 }
+.imageBox {
+  width: 50%;
+  height: 100%;
+}
+.contentBox {
+  width: 50%;
+  height: 100%;
+}
 .header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 0.6em;
-  font-size: 0.8em;
+  font-size: 1.3em;
+  height: 8%;
 }
 .icons {
   padding: 0.5rem;
@@ -55,7 +68,8 @@
   cursor: pointer;
 }
 .formBox {
-  height: 45%;
+  height: 70%;
+  padding: 5%;
 }
 .title {
   width: 90%;
@@ -64,7 +78,7 @@
 }
 .textArea {
   width: 90%;
-  height: 100%;
+  height: 90%;
   overflow: auto;
   border: 0;
 }
@@ -74,7 +88,42 @@
 .textArea:focus {
   outline: none;
 }
-
+.closeBtn {
+  float: right;
+  margin-top: -2%;
+  margin-right: 5%;
+  background-color: transparent;
+  border: none;
+  font-size: 1.1em;
+  opacity: 0.8;
+}
+.closeBtn:hover {
+  cursor: pointer;
+  opacity: 1;
+  transform: scale(1.1);
+  animation-duration: 300ms;
+}
+.closeBtn:focus {
+  outline: none;
+}
 .snow {
   color: skyblue;
+}
+
+@media screen and (max-width: 768px) {
+  .DiaryEditForm {
+    flex-direction: column;
+    width: 90%;
+  }
+  .imageBox {
+    width: 100%;
+    height: 30%;
+  }
+  .contentBox {
+    width: 100%;
+    height: 70%;
+  }
+  .header {
+    font-size: 1.1em;
+  }
 }

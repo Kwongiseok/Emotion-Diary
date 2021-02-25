@@ -23,14 +23,14 @@ const Header = memo(({ authService, uid, handleVisible }) => {
         <h3 className={styles.title}>Emotion Diary</h3>
       </div>
       {uid ? (
-        <nav className={styles.navMenus}>
+        <div className={styles.navMenus}>
           <span className={styles.navMenu} onClick={handleVisible}>
             일기 작성
           </span>
           <span className={styles.navMenu} onClick={logout}>
             로그아웃
           </span>
-        </nav>
+        </div>
       ) : (
         <nav className={styles.navMenus}>
           <span className={styles.navMenu} onClick={handleSignUp}>

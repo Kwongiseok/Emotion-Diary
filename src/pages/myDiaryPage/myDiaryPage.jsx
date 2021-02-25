@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { memo, useCallback, useEffect, useState } from "react";
 import Calendar from "../../components/calendar/calendar";
 import DiaryCards from "../../components/diaryCards/diaryCards";
 import DiaryEditForm from "../../components/diaryEditForm/diaryEditForm";
@@ -11,7 +11,7 @@ import { Drawer } from "antd";
 import useDate from "../../hooks/useDate";
 import CalendarHeader from "../../components/calendar/calendarHeader";
 
-const MyDiaryPage = ({ FileInput, authService, dbService }) => {
+const MyDiaryPage = memo(({ FileInput, authService, dbService }) => {
   const history = useHistory();
   // const storageDate = sessionStorage.getItem("pageDate");
   // const pageDate = storageDate ? storageDate : new Date();
@@ -68,8 +68,8 @@ const MyDiaryPage = ({ FileInput, authService, dbService }) => {
   const deleteDiaryFromList = (year, month, id) => {
     dbService.deleteDiary(uid, year, month, id);
     setDiaryList((diarys) => {
-      console.log(typeof diarys);
-      const updated = diarys.filter((diary) => diary.id !== id);
+      const updated = { ...diarys };
+      delete updated[id];
       return updated;
     });
   };
@@ -152,6 +152,6 @@ const MyDiaryPage = ({ FileInput, authService, dbService }) => {
       </div>
     </React.Fragment>
   );
-};
+});
 
 export default MyDiaryPage;

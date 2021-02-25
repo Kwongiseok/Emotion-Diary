@@ -131,52 +131,61 @@ const DiaryEditForm = ({
   return (
     <div className={styles.DiaryEditModal}>
       <div ref={modalRef} className={styles.DiaryEditForm}>
-        <div
-          className={styles.header}
-        >{`${editYear} ${weekDays[editDay]}`}</div>
         <div className={styles.imageBox}>
           <FileInput onFileChange={onFileChange} imageURL={imageURL} />
         </div>
-        <div className={styles.icons}>
-          <Tooltip title={"오늘의 날씨를 기록해요!"}>
-            <select ref={weatherRef} className={styles.weather}>
-              <option value="☀️">☀️</option>
-              <option value="🌥">🌥</option>
-              <option value="🌨">🌨</option>
-              <option value="☔">☔</option>
-            </select>
-          </Tooltip>
-          {emotion ? (
-            <button className={styles.emotion} onClick={handleEmotion}>
-              <Tooltip title={"오늘의 감정을 알아봐요!"}>{emotion}</Tooltip>
-            </button>
-          ) : (
-            <button className={styles.emotion} onClick={handleEmotion}>
-              <Tooltip title={"오늘의 감정을 알아봐요!"}>{"🧐"}</Tooltip>
-            </button>
-          )}
+        <div className={styles.contentBox}>
+          <div
+            className={styles.header}
+          >{`${editYear} ${weekDays[editDay]}`}</div>
+          <div className={styles.icons}>
+            <Tooltip title={"오늘의 날씨를 기록해요!"}>
+              <select ref={weatherRef} className={styles.weather}>
+                <option value="☀️">☀️</option>
+                <option value="🌥">🌥</option>
+                <option value="🌨">🌨</option>
+                <option value="☔">☔</option>
+              </select>
+            </Tooltip>
+            {emotion ? (
+              <button className={styles.emotion} onClick={handleEmotion}>
+                <Tooltip title={"오늘의 감정을 알아봐요!"}>{emotion}</Tooltip>
+              </button>
+            ) : (
+              <button className={styles.emotion} onClick={handleEmotion}>
+                <Tooltip title={"오늘의 감정을 알아봐요!"}>{"🧐"}</Tooltip>
+              </button>
+            )}
+          </div>
+          <form
+            ref={formRef}
+            className={styles.formBox}
+            onSubmit={handleSubmit}
+          >
+            <input
+              ref={titleRef}
+              className={styles.title}
+              type="text"
+              placeholder={"Title"}
+              name="title"
+              value={title || ""}
+              maxLength="18"
+              onChange={onChange}
+            />
+            <textarea
+              type="text"
+              ref={diaryTextRef}
+              className={styles.textArea}
+              placeholder={"오늘 하루 어땠나요?"}
+              name="diaryText"
+              value={diaryText || ""}
+              onChange={onChange}
+            />
+          </form>
+          <button className={styles.closeBtn} onClick={onClose}>
+            X
+          </button>
         </div>
-        <form ref={formRef} className={styles.formBox} onSubmit={handleSubmit}>
-          <input
-            ref={titleRef}
-            className={styles.title}
-            type="text"
-            placeholder={"Title"}
-            name="title"
-            value={title || ""}
-            maxLength="18"
-            onChange={onChange}
-          />
-          <textarea
-            type="text"
-            ref={diaryTextRef}
-            className={styles.textArea}
-            placeholder={"오늘 하루 어땠나요?"}
-            name="diaryText"
-            value={diaryText || ""}
-            onChange={onChange}
-          />
-        </form>
       </div>
     </div>
   );

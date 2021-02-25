@@ -4,13 +4,12 @@
   z-index: 1;
   background-color: white;
   width: 100%;
-  height: 6%;
   flex-wrap: wrap;
   flex-direction: row;
   border-bottom: solid 2px antiquewhite;
   text-align: center;
   align-items: center;
-  padding: 0.8rem;
+  padding: 16px;
   justify-content: space-between;
 }
 .logo {
@@ -23,6 +22,7 @@
   font-size: 1.2em;
 }
 .navMenus {
+  height: 100%;
   right: 10%;
 }
 .navMenu {
@@ -38,10 +38,10 @@
 
 @media screen and (max-width: 768px) {
   .title {
-    font-size: 14px;
+    font-size: 13px;
   }
   .navMenu {
-    font-size: 14px;
+    font-size: 13px;
     margin-right: 10px;
   }
 }

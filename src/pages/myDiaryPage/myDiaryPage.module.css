@@ -1,8 +1,8 @@
 .MyDiaryPage {
   display: flex;
   flex-direction: column;
-  overflow-y: auto;
 }
+
 .pageCalendar {
   margin-top: 6%;
   display: flex;
@@ -15,14 +15,8 @@
   width: 100%;
   height: 100vh;
 }
-.Drawer {
-  width: 90vw;
-}
 @media screen and (max-width: 768px) {
   .pageCalendar {
-    margin-top: 15%;
-  }
-  .Drawer {
-    width: 90vw;
+    margin-top: 18%;
   }
 }
