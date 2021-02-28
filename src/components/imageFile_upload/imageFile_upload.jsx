@@ -32,6 +32,7 @@ const ImageFileUpload = memo(({ imageUploader, onFileChange, imageURL }) => {
             <img
               className={styles.image}
               src={imageURL}
+              alt="imageURL"
               onClick={onButtonClick}
             />
           ) : (

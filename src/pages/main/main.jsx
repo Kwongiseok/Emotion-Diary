@@ -4,6 +4,7 @@ import ModalPotal from "../../components/portal_modal/modalPotal";
 import styles from "./main.module.css";
 import { useHistory } from "react-router-dom";
 import Header from "../../components/header/header";
+import HowToUse from "../../components/howToUse/howToUse";
 
 const Main = ({ authService }) => {
   const history = useHistory();
@@ -24,6 +25,9 @@ const Main = ({ authService }) => {
   return (
     <div className="main">
       <Header authService={authService} uid={uid} />
+      <section className={styles.howToUse}>
+        <HowToUse />
+      </section>
     </div>
   );
 };

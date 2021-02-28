@@ -1,7 +1,6 @@
 import React from "react";
 import styles from "./calendar.module.css";
 import {
-  getDate,
   addDays,
   getYear,
   getMonth,

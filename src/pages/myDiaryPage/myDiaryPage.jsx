@@ -125,7 +125,7 @@ const MyDiaryPage = memo(({ FileInput, authService, dbService }) => {
             placement="right"
             visible={visible}
             onClose={handleVisible}
-            width={window.innerWidth > 768 ? "34vw" : "90vw"}
+            width={window.innerWidth > 768 ? "36vw" : "90vw"}
             zIndex={1}
           >
             <Calendar
