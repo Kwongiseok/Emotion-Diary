@@ -30,6 +30,9 @@ const LoginModal = ({ onClose, authService, loginSaveUid }) => {
   return (
     <div className={styles.loginModal}>
       <div ref={modalRef} className={styles.login}>
+        <button className={styles.closeBtn} onClick={onClose}>
+          X
+        </button>
         <PortalHeader loginOrSignUp={clickLogin ? "로그인" : "회원 가입"} />
         {clickLogin ? (
           <LoginBody
@@ -51,11 +54,6 @@ const LoginModal = ({ onClose, authService, loginSaveUid }) => {
           onClose={onClose}
           loginSaveUid={loginSaveUid}
         />
-        <div className={styles.close}>
-          <button className={styles.closeBtn} onClick={onClose}>
-            X close
-          </button>
-        </div>
       </div>
     </div>
   );

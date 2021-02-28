@@ -10,7 +10,14 @@ const HowToUse = (props) => (
         <p>이미지 업로드와 오늘의 감정분석이 가능해요!</p>
       </div>
     </div>
-    <video className={styles.video} src={useVideo} autoPlay muted loop></video>
+    <video
+      className={styles.video}
+      src={useVideo}
+      autoPlay
+      muted
+      loop
+      playsinline
+    ></video>
   </div>
 );
 

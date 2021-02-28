@@ -8,7 +8,6 @@ const PortalFooter = ({ authService, onClose }) => {
       pathname: "/myDiaryPage",
       state: { id: user.uid },
     });
-    console.log(user.uid);
     onClose();
   };
   const handleGoogleLogin = () => {

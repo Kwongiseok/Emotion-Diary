@@ -14,7 +14,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  height: 70%;
+  height: 90%;
   width: 35%;
   margin: auto;
   background-color: white;
@@ -71,14 +71,10 @@
 .authManage {
   margin-top: 2em;
 }
-.close {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 1em;
-}
 .closeBtn {
-  font-size: 1.2em;
+  float: right;
+  margin-right: 5%;
+  font-size: 1em;
   background-color: transparent;
   border: none;
 }
@@ -88,6 +84,7 @@
 }
 @media (max-width: 768px) {
   .login {
-    width: 90%;
+    width: 90vw;
+    height: 80vh;
   }
 }

@@ -133,6 +133,7 @@
   .DiaryEditForm {
     flex-direction: column;
     width: 90%;
+    height: 80vh;
   }
   .imageBox {
     width: 100%;
