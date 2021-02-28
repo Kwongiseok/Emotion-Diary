@@ -40,7 +40,7 @@ const DiaryEditForm = ({
       day: weekDays[editDay],
       weather: weatherRef.current.value || "",
       diaryText: diaryTextRef.current.value || "",
-      emotion: "😀", // 이모션 메커니즘 생성 후
+      emotion: "", // 이모션 메커니즘 생성 후
       imageURL: "",
     };
     return newDiary;

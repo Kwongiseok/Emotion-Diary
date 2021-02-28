@@ -75,7 +75,7 @@
   position: absolute;
   left: 0;
   right: 0;
-  bottom: 2em;
+  bottom: 1em;
 }
 .closeBtn {
   font-size: 1.2em;
@@ -86,7 +86,7 @@
   cursor: pointer;
   outline: none;
 }
-@media (max-width: 812px) {
+@media (max-width: 768px) {
   .login {
     width: 90%;
   }

@@ -55,6 +55,16 @@
 .emotion:focus {
   outline: none;
 }
+
+.loading {
+  width: 1.5em;
+  height: 1.5em;
+  border-radius: 50%;
+  border: 2px solid lightgrey;
+  border-top: 4px solid lightpink;
+  animation: spin 2s linear infinite;
+}
+
 .weather {
   border: 0;
   width: 2rem;
@@ -108,6 +118,15 @@
 }
 .snow {
   color: skyblue;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 @media screen and (max-width: 768px) {

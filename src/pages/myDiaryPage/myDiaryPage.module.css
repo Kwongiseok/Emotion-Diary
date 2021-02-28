@@ -4,7 +4,7 @@
 }
 
 .pageCalendar {
-  margin-top: 6%;
+  margin-top: 6em;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -17,6 +17,6 @@
 }
 @media screen and (max-width: 768px) {
   .pageCalendar {
-    margin-top: 18%;
+    margin-top: 5em;
   }
 }

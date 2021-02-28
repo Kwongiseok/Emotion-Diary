@@ -1,12 +1,18 @@
 import { Button } from "antd";
 import React, { useRef } from "react";
+import { useHistory } from "react-router-dom";
 import styles from "./loginModal.module.css";
 const LoginBody = ({ authService, onClickAuth, onClose }) => {
   const formRef = useRef();
   const emailRef = useRef();
   const passwordRef = useRef();
+  const history = useHistory();
   const successLogin = ({ user }) => {
     onClose();
+    history.push({
+      pathname: "/myDiaryPage",
+      state: { id: user.uid },
+    });
   };
   const handleSubmit = (event) => {
     event.preventDefault();

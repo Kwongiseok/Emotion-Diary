@@ -1,4 +1,3 @@
-import { Button } from "antd";
 import React, { useRef } from "react";
 import { useHistory } from "react-router-dom";
 import styles from "./loginModal.module.css";
@@ -10,6 +9,10 @@ const RegisterBody = ({ authService, onClickAuth, onClose }) => {
   const history = useHistory();
   const goToMain = ({ user }) => {
     onClose();
+    history.push({
+      pathname: "/myDiaryPage",
+      state: { id: user.uid },
+    });
   };
 
   const handleSubmit = (event) => {
@@ -48,7 +51,7 @@ const RegisterBody = ({ authService, onClickAuth, onClose }) => {
         ref={passwordRef}
         type="password"
         className={styles.inputBar}
-        placeholder="비밀번호"
+        placeholder="비밀번호 (6자리 이상 입력해주세요.)"
       />
 
       <button className={styles.loginBtn}>회원가입</button>

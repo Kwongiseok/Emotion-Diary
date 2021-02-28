@@ -12,7 +12,7 @@ const DiaryCards = ({
 }) => {
   return (
     <section className={styles.DiaryCards}>
-      <Row gutter={[16, 16]} wrap={true}>
+      <Row gutter={[16, 16]} wrap={true} style={{ width: "100%" }}>
         {diaryList &&
           Object.keys(diaryList).map((key) => (
             <Col lg={8} md={12} xs={24} align="middle" key={key}>

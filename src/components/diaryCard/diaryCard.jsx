@@ -21,8 +21,7 @@ const DiaryCard = ({
       <div className={styles.diaryText} onClick={handleClick}>
         <h3 className={styles.diaryTitle}>{cardInfo.title}</h3>
         <h4 className={styles.diaryInsideTitle}>
-          {cardInfo.diaryText.split(".")[0] ||
-            cardInfo.diaryText.split("\n")[0]}
+          {cardInfo.diaryText.split(".")[0]}
         </h4>
       </div>
       {selected && (
