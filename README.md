@@ -38,6 +38,7 @@
   https://console.firebase.google.com/?hl=ko 로 접속하여 API Key를 생성
 
   #3 Cloudinary Image Upload URL 생성
+  https://cloudinary.com/ 사이트에 접속
 
   #4 최상단 디렉토리에 .env 파일 (환경 변수 관리) 파일을 생성
   .env 파일 내에 생성한 Firebase Key, Cloudinary Upload URL을 변수로 대입
