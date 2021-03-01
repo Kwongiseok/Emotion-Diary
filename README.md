@@ -11,9 +11,14 @@
 
 ## 🔗 Link
 
-[Emotion Diary](https://603b38a0bf1ef7849dca85f7--emotion-diary.netlify.app/){:target="\_blank"}
-[Frontend code](https://github.com/Kwongiseok/Emotion-Diary){:target="\_blank"}
-[Backend code](https://github.com/Kwongiseok/Emotion-Diary-Back){:target="\_blank"}
+<a href="https://603b38a0bf1ef7849dca85f7--emotion-diary.netlify.app/" target="_blank">
+Emotion Diary</a>
+</br>
+<a href="https://github.com/Kwongiseok/Emotion-Diary" target="_blank">
+Frontend Code</a>
+</br>
+<a href="https://github.com/Kwongiseok/Emotion-Diary-Back" target="_blank">
+Backend Code</a>
 
 ## 🏁 How to start project
 
